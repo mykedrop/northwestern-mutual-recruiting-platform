@@ -1,0 +1,43 @@
+/* Enhanced sourcing styles - scoped to #sourcing-view */
+@import url('./candidate-report.css');
+
+#sourcing-view .candidate-card { background: #fff; border-radius: 12px; padding: 20px; border: 2px solid #E4E4E7; transition: all .3s ease; position: relative; }
+#sourcing-view .candidate-card:hover { border-color: #003d82; box-shadow: 0 8px 24px rgba(0,61,130,.12); transform: translateY(-2px); }
+#sourcing-view .card-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid #E4E4E7; }
+#sourcing-view .candidate-name { font-size:18px; font-weight:700; color:#18181B; margin:0 0 4px 0; display:flex; align-items:center; gap:8px; }
+#sourcing-view .match-score { display:flex; flex-direction:column; align-items:center; padding:8px 12px; background: linear-gradient(135deg,#003d82 0%,#0056b3 100%); border-radius:8px; color:#fff; }
+#sourcing-view .match-score-value { font-size:20px; font-weight:700; }
+#sourcing-view .match-score-label { font-size:10px; text-transform:uppercase; letter-spacing:.5px; opacity:.9; }
+#sourcing-view .key-metrics { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0; }
+#sourcing-view .metric-item { display:flex; align-items:center; gap:8px; padding:8px; background:#F9FAFB; border-radius:6px; border:1px solid #E4E4E7; }
+#sourcing-view .status-badges { display:flex; gap:8px; margin:12px 0; flex-wrap:wrap; }
+#sourcing-view .badge { padding:4px 10px; border-radius:20px; font-size:12px; font-weight:600; display:inline-flex; align-items:center; gap:4px; }
+#sourcing-view .badge.industry { background: linear-gradient(135deg,#F4F4F5 0%,#E4E4E7 100%); color:#3F3F46; border:1px solid #D4D4D8; }
+#sourcing-view .badge.fa-status { background: linear-gradient(135deg,#10b981 0%,#059669 100%); color:#fff; }
+#sourcing-view .badge.not-fa { background:#FEF3C7; color:#92400E; border:1px solid #FDE68A; }
+#sourcing-view .licenses { display:flex; gap:6px; margin:8px 0; flex-wrap:wrap; }
+#sourcing-view .license-pill { padding:3px 8px; background:#EFF6FF; border:1px solid #BFDBFE; border-radius:4px; font-size:11px; font-weight:600; color:#1E40AF; }
+#sourcing-view .card-actions { display:flex; gap:8px; margin-top:16px; padding-top:12px; border-top:1px solid #E4E4E7; }
+#sourcing-view .btn-view-report { flex:1; padding:10px; background: linear-gradient(135deg,#003d82 0%,#0056b3 100%); color:#fff; border:none; border-radius:6px; font-size:14px; font-weight:600; cursor:pointer; transition:all .2s; }
+#sourcing-view .btn-view-report:hover { background: linear-gradient(135deg,#0056b3 0%,#003d82 100%); transform: translateY(-1px); box-shadow:0 4px 12px rgba(0,61,130,.25); }
+#sourcing-view .btn-quick-save { padding:10px 16px; background:#fff; color:#003d82; border:2px solid #003d82; border-radius:6px; font-size:14px; font-weight:600; cursor:pointer; transition:all .2s; }
+#sourcing-view .btn-quick-save:hover { background:#003d82; color:#fff; }
+#sourcing-view .pagination-container { display:flex; justify-content:center; align-items:center; gap:8px; margin-top:32px; padding:20px; }
+#sourcing-view .pagination-info { margin-right:20px; color:#52525B; font-size:14px; }
+#sourcing-view .pagination-btn { padding:8px 12px; background:#fff; border:1px solid #D4D4D8; border-radius:6px; color:#3F3F46; font-size:14px; font-weight:500; cursor:pointer; transition:all .2s; }
+#sourcing-view .pagination-btn:hover:not(:disabled) { background:#003d82; color:#fff; border-color:#003d82; }
+#sourcing-view .pagination-btn:disabled { opacity:.5; cursor:not-allowed; }
+#sourcing-view .page-numbers { display:flex; gap:4px; }
+#sourcing-view .page-num { min-width:36px; height:36px; display:flex; align-items:center; justify-content:center; background:#fff; border:1px solid #D4D4D8; border-radius:6px; color:#3F3F46; font-size:14px; font-weight:500; cursor:pointer; transition:all .2s; }
+#sourcing-view .page-num.active { background:#003d82; color:#fff; border-color:#003d82; }
+#sourcing-view .loading-overlay { position:absolute; inset:0; background:rgba(255,255,255,.9); display:flex; align-items:center; justify-content:center; border-radius:12px; z-index:10; }
+#sourcing-view .loading-spinner { width:40px; height:40px; border:4px solid #E4E4E7; border-top-color:#003d82; border-radius:50%; animation:spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Card display refinements */
+#sourcing-view .candidate-card .candidate-company { color:#6B7280; font-size:13px; margin-top:2px; }
+#sourcing-view .candidate-card .key-metrics { background:#F9FAFB; padding:12px; border-radius:8px; margin:12px 0; }
+#sourcing-view .candidate-card .metric-label { font-size:10px; font-weight:700; letter-spacing:.5px; color:#71717A; }
+#sourcing-view .candidate-card .metric-value { font-size:14px; font-weight:600; color:#111827; margin-top:2px; }
+#sourcing-view .candidate-card .status-badges { display:flex; gap:4px; flex-wrap:wrap; margin:8px 0; }
+

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northwestern Mutual - Assessment Outcomes & Intelligence Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .progress-bar { transition: width 0.3s ease; }
+        .report-card { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen">
+        <!-- Header -->
+        <div class="bg-blue-900 text-white shadow-lg">
+            <div class="max-w-7xl mx-auto px-6 py-4">
+                <div class="flex items-center">
+                    <div class="bg-white text-blue-900 px-3 py-2 rounded font-bold text-lg mr-4">NM</div>
+                    <div>
+                        <h1 class="text-2xl font-bold">Northwestern Mutual</h1>
+                        <span class="text-sm opacity-75">Assessment Outcomes & Intelligence Report</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto p-6 space-y-8">
+            <!-- Overview -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">📊 Assessment Outcomes Overview</h2>
+                <p class="text-gray-600 mb-6">Comprehensive analysis of what Northwestern Mutual receives after each candidate completes the behavioral assessment</p>
+
+                <!-- What Gets Analyzed -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-blue-50 p-4 rounded-lg text-center">
+                        <div class="text-2xl mb-2">🎯</div>
+                        <div class="font-semibold text-blue-900">Behavioral Scores</div>
+                        <div class="text-sm text-blue-700">12 key dimensions</div>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg text-center">
+                        <div class="text-2xl mb-2">🧠</div>
+                        <div class="font-semibold text-green-900">Personality Profile</div>
+                        <div class="text-sm text-green-700">MBTI, DISC, Big Five</div>
+                    </div>
+                    <div class="bg-purple-50 p-4 rounded-lg text-center">
+                        <div class="text-2xl mb-2">📈</div>
+                        <div class="font-semibold text-purple-900">Success Predictions</div>
+                        <div class="text-sm text-purple-700">Performance forecasts</div>
+                    </div>
+                    <div class="bg-orange-50 p-4 rounded-lg text-center">
+                        <div class="text-2xl mb-2">💡</div>
+                        <div class="font-semibold text-orange-900">AI Recommendations</div>
+                        <div class="text-sm text-orange-700">Hiring & development</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sample Candidate Profile -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900">Sample Assessment Report</h3>
+                        <p class="text-gray-600">Tyler Brooks - Financial Advisor Candidate</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Assessment Complete</div>
+                        <div class="text-sm text-gray-500 mt-1">Completed: March 15, 2024</div>
+                    </div>
+                </div>
+
+                <!-- Overall Score Card -->
+                <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-blue-600">87</div>
+                            <div class="text-sm text-gray-600">Overall Score</div>
+                            <div class="text-xs text-green-600 font-medium">Excellent Fit</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-purple-600">92</div>
+                            <div class="text-sm text-gray-600">FA Fit Score</div>
+                            <div class="text-xs text-green-600 font-medium">Strong Candidate</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-green-600">LOW</div>
+                            <div class="text-sm text-gray-600">Risk Level</div>
+                            <div class="text-xs text-green-600 font-medium">High Confidence</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Behavioral Dimensions -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-semibold text-gray-900 mb-4">🎯 Behavioral Dimension Scores</h4>
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium text-gray-900">Achievement Drive</span>
+                                <span class="text-lg font-bold text-green-600">94</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="bg-green-500 h-3 rounded-full progress-bar" style="width: 94%"></div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-1">Exceptional motivation for challenging goals and high performance standards</div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium text-gray-900">Client Focus</span>
+                                <span class="text-lg font-bold text-green-600">89</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="bg-green-500 h-3 rounded-full progress-bar" style="width: 89%"></div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-1">Strong dedication to understanding and serving client needs</div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium text-gray-900">Resilience</span>
+                                <span class="text-lg font-bold text-blue-600">82</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="bg-blue-500 h-3 rounded-full progress-bar" style="width: 82%"></div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-1">Good ability to bounce back from setbacks and rejection</div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium text-gray-900">Communication Skills</span>
+                                <span class="text-lg font-bold text-green-600">91</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="bg-green-500 h-3 rounded-full progress-bar" style="width: 91%"></div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-1">Excellent verbal and written communication effectiveness</div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium text-gray-900">Learning Agility</span>
+                                <span class="text-lg font-bold text-blue-600">78</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="bg-blue-500 h-3 rounded-full progress-bar" style="width: 78%"></div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-1">Solid speed and effectiveness in learning new concepts</div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium text-gray-900">Collaboration</span>
+                                <span class="text-lg font-bold text-blue-600">76</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="bg-blue-500 h-3 rounded-full progress-bar" style="width: 76%"></div>
+                            </div>
+                            <div class="text-sm text-gray-600 mt-1">Good ability to work effectively with teams</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personality Profile -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-semibold text-gray-900 mb-4">🧠 Personality Profile Analysis</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-blue-900 mb-2">MBTI Profile</h5>
+                            <div class="text-2xl font-bold text-blue-600 mb-1">ENTJ</div>
+                            <div class="text-sm text-blue-700">
+                                <div>• <strong>Extraverted:</strong> Energized by interaction</div>
+                                <div>• <strong>Intuitive:</strong> Focuses on big picture</div>
+                                <div>• <strong>Thinking:</strong> Logic-driven decisions</div>
+                                <div>• <strong>Judging:</strong> Prefers structure</div>
+                            </div>
+                            <div class="mt-2 text-xs text-blue-600 font-medium">Ideal for leadership roles</div>
+                        </div>
+
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-green-900 mb-2">DISC Profile</h5>
+                            <div class="text-2xl font-bold text-green-600 mb-1">DI</div>
+                            <div class="text-sm text-green-700">
+                                <div>• <strong>Dominance:</strong> Direct, decisive</div>
+                                <div>• <strong>Influence:</strong> Enthusiastic, persuasive</div>
+                                <div>• <strong>Steadiness:</strong> Moderate</div>
+                                <div>• <strong>Conscientiousness:</strong> Moderate</div>
+                            </div>
+                            <div class="mt-2 text-xs text-green-600 font-medium">Natural sales orientation</div>
+                        </div>
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-purple-900 mb-2">Enneagram</h5>
+                            <div class="text-2xl font-bold text-purple-600 mb-1">Type 3</div>
+                            <div class="text-sm text-purple-700">
+                                <div>• <strong>The Achiever</strong></div>
+                                <div>• Success-oriented</div>
+                                <div>• Adaptable</div>
+                                <div>• Image-conscious</div>
+                            </div>
+                            <div class="mt-2 text-xs text-purple-600 font-medium">Driven by achievement</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Predictions -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-semibold text-gray-900 mb-4">📈 Northwestern Mutual Success Predictions</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-green-50 p-4 rounded-lg text-center">
+                            <div class="text-3xl font-bold text-green-600">89%</div>
+                            <div class="text-sm text-gray-600">First Year Success</div>
+                            <div class="text-xs text-green-600 mt-1">Above Average</div>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg text-center">
+                            <div class="text-3xl font-bold text-blue-600">85%</div>
+                            <div class="text-sm text-gray-600">3-Year Retention</div>
+                            <div class="text-xs text-blue-600 mt-1">High Likelihood</div>
+                        </div>
+                        <div class="bg-purple-50 p-4 rounded-lg text-center">
+                            <div class="text-3xl font-bold text-purple-600">92%</div>
+                            <div class="text-sm text-gray-600">Client Satisfaction</div>
+                            <div class="text-xs text-purple-600 mt-1">Excellent</div>
+                        </div>
+                        <div class="bg-orange-50 p-4 rounded-lg text-center">
+                            <div class="text-2xl font-bold text-orange-600">Above Avg</div>
+                            <div class="text-sm text-gray-600">Revenue Generation</div>
+                            <div class="text-xs text-orange-600 mt-1">Strong Potential</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI-Generated Insights -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-semibold text-gray-900 mb-4">🤖 AI-Generated Intelligence Report</h4>
+                    <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg p-6">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-semibold text-gray-900 mb-3">🎯 Key Strengths</h5>
+                                <ul class="space-y-2 text-sm text-gray-700">
+                                    <li class="flex items-start">
+                                        <span class="text-green-500 mr-2">✓</span>
+                                        <span><strong>Exceptional Achievement Drive:</strong> Demonstrates strong motivation for challenging goals and consistently exceeds performance standards</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-500 mr-2">✓</span>
+                                        <span><strong>Superior Communication Skills:</strong> Excels at explaining complex financial concepts in accessible terms</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-500 mr-2">✓</span>
+                                        <span><strong>Strong Client Focus:</strong> Genuine dedication to understanding and serving client needs with ethical approach</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-green-500 mr-2">✓</span>
+                                        <span><strong>Leadership Potential:</strong> ENTJ profile indicates natural leadership capabilities and strategic thinking</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h5 class="font-semibold text-gray-900 mb-3">⚠️ Development Areas</h5>
+                                <ul class="space-y-2 text-sm text-gray-700">
+                                    <li class="flex items-start">
+                                        <span class="text-yellow-500 mr-2">!</span>
+                                        <span><strong>Team Collaboration:</strong> Moderate score suggests preference for independent work - may benefit from team-building activities</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-yellow-500 mr-2">!</span>
+                                        <span><strong>Learning Agility:</strong> Good but not exceptional - structured learning programs recommended</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-yellow-500 mr-2">!</span>
+                                        <span><strong>Patience Building:</strong> Type 3 Achiever may need support in long-term client relationship building</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hiring Recommendation -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-semibold text-gray-900 mb-4">💼 Hiring & Development Recommendations</h4>
+                    <div class="bg-green-50 border-l-4 border-green-500 p-6">
+                        <div class="flex items-start">
+                            <div class="text-2xl mr-3">✅</div>
+                            <div>
+                                <h5 class="font-semibold text-green-900 mb-2">STRONG HIRE RECOMMENDATION</h5>
+                                <p class="text-green-800 mb-4">Tyler Brooks demonstrates exceptional potential for success as a Northwestern Mutual Financial Advisor. High achievement drive, excellent communication skills, and strong client focus align perfectly with role requirements.</p>
+
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                    <div>
+                                        <h6 class="font-medium text-green-900 mb-2">Immediate Actions</h6>
+                                        <ul class="text-sm text-green-700 space-y-1">
+                                            <li>• Fast-track for advanced training</li>
+                                            <li>• Pair with top-performing mentor</li>
+                                            <li>• Assign challenging initial goals</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-medium text-green-900 mb-2">90-Day Plan</h6>
+                                        <ul class="text-sm text-green-700 space-y-1">
+                                            <li>• Focus on relationship-building skills</li>
+                                            <li>• Structured learning program</li>
+                                            <li>• Team collaboration workshops</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h6 class="font-medium text-green-900 mb-2">Long-term Development</h6>
+                                        <ul class="text-sm text-green-700 space-y-1">
+                                            <li>• Leadership development track</li>
+                                            <li>• Advanced financial planning certification</li>
+                                            <li>• Potential team lead role</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What Northwestern Mutual Gets -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">📋 Complete Assessment Deliverables</h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-900 mb-4">📊 Quantitative Analysis</h4>
+                        <div class="space-y-3">
+                            <div class="bg-gray-50 p-3 rounded">
+                                <div class="font-medium text-gray-900">Behavioral Dimension Scores</div>
+                                <div class="text-sm text-gray-600">6 core dimensions, 0-100 scale with percentile rankings</div>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded">
+                                <div class="font-medium text-gray-900">Overall Fit Scores</div>
+                                <div class="text-sm text-gray-600">General and FA-specific weighted scoring</div>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded">
+                                <div class="font-medium text-gray-900">Risk Assessment</div>
+                                <div class="text-sm text-gray-600">Low/Medium/High risk categorization</div>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded">
+                                <div class="font-medium text-gray-900">Success Predictions</div>
+                                <div class="text-sm text-gray-600">First-year, retention, and performance forecasts</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-900 mb-4">🧠 Qualitative Insights</h4>
+                        <div class="space-y-3">
+                            <div class="bg-gray-50 p-3 rounded">
+                                <div class="font-medium text-gray-900">Personality Profiles</div>
+                                <div class="text-sm text-gray-600">MBTI, DISC, and Enneagram classifications</div>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded">
+                                <div class="font-medium text-gray-900">AI-Generated Insights</div>
+                                <div class="text-sm text-gray-600">Strengths, development areas, and behavioral patterns</div>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded">
+                                <div class="font-medium text-gray-900">Hiring Recommendation</div>
+                                <div class="text-sm text-gray-600">Clear hire/no-hire guidance with reasoning</div>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded">
+                                <div class="font-medium text-gray-900">Development Plan</div>
+                                <div class="text-sm text-gray-600">Immediate, 90-day, and long-term recommendations</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assessment Analytics -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">📈 Assessment Analytics Dashboard</h3>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-900 mb-4">Response Pattern Analysis</h4>
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium">Completion Time</span>
+                                    <span class="font-bold text-blue-600">18 minutes</span>
+                                </div>
+                                <div class="text-sm text-gray-600">Average time per question: 40 seconds</div>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium">Response Consistency</span>
+                                    <span class="font-bold text-green-600">94%</span>
+                                </div>
+                                <div class="text-sm text-gray-600">High reliability in similar question responses</div>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium">Social Desirability</span>
+                                    <span class="font-bold text-purple-600">Low</span>
+                                </div>
+                                <div class="text-sm text-gray-600">Authentic responses, minimal impression management</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-900 mb-4">Comparative Analysis</h4>
+                        <div class="space-y-4">
+                            <div class="bg-orange-50 p-4 rounded-lg">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium">vs. Top Performers</span>
+                                    <span class="font-bold text-orange-600">87% Match</span>
+                                </div>
+                                <div class="text-sm text-gray-600">Strong alignment with high-performing FAs</div>
+                            </div>
+                            <div class="bg-indigo-50 p-4 rounded-lg">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium">Candidate Percentile</span>
+                                    <span class="font-bold text-indigo-600">92nd</span>
+                                </div>
+                                <div class="text-sm text-gray-600">Outperforms 92% of all assessed candidates</div>
+                            </div>
+                            <div class="bg-teal-50 p-4 rounded-lg">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium">Role Fit Index</span>
+                                    <span class="font-bold text-teal-600">Excellent</span>
+                                </div>
+                                <div class="text-sm text-gray-600">Top 10% fit for Financial Advisor role</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Export & Sharing Options -->
+            <div class="bg-gray-100 rounded-lg p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">📤 Report Delivery Options</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded-lg text-center">
+                        <div class="text-2xl mb-2">📧</div>
+                        <div class="font-medium text-gray-900">Email Reports</div>
+                        <div class="text-sm text-gray-600">Automated delivery to hiring managers</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg text-center">
+                        <div class="text-2xl mb-2">📱</div>
+                        <div class="font-medium text-gray-900">Dashboard Access</div>
+                        <div class="text-sm text-gray-600">Real-time viewing in recruitment platform</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg text-center">
+                        <div class="text-2xl mb-2">📄</div>
+                        <div class="font-medium text-gray-900">PDF Export</div>
+                        <div class="text-sm text-gray-600">Professional reports for stakeholder review</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

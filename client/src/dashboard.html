@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northwestern Mutual - Recruiter Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="css/ai-dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="logo">
+                <h1>Northwestern Mutual</h1>
+                <span class="subtitle">Recruiting Intelligence Platform</span>
+            </div>
+            <nav class="dashboard-nav">
+                <button class="nav-btn active" data-view="overview">Overview</button>
+                <button class="nav-btn" data-view="candidates">Candidates</button>
+                <button class="nav-btn" onclick="window.location.href='/kanban.html'">Pipeline</button>
+                <button class="nav-btn" data-view="analytics">Analytics</button>
+                <button class="nav-btn" data-view="compare">Compare</button>
+                <button class="nav-btn" data-view="ai-dashboard">AI Dashboard</button>
+            </nav>
+            <div class="user-menu">
+                <span id="user-name"></span>
+                <button id="logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Overview View -->
+            <section id="overview-view" class="view-section active">
+                <h2>Dashboard Overview</h2>
+                
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-candidates">0</div>
+                        <div class="stat-label">Total Candidates</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="completed-assessments">0</div>
+                        <div class="stat-label">Completed Assessments</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="in-progress">0</div>
+                        <div class="stat-label">In Progress</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="today-candidates">0</div>
+                        <div class="stat-label">Added Today</div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="recent-activity">
+                    <h3>Recent Candidates</h3>
+                    <div id="recent-candidates-list"></div>
+                </div>
+
+                <!-- Notifications -->
+                <div class="notifications-panel">
+                    <h3>Notifications</h3>
+                    <div id="notifications-list"></div>
+                </div>
+            </section>
+
+            <!-- Candidates View -->
+            <section id="candidates-view" class="view-section">
+                <div class="view-header">
+                    <h2>All Candidates</h2>
+                    <div class="actions">
+                        <input type="text" id="search-input" placeholder="Search candidates...">
+                        <select id="status-filter">
+                            <option value="">All Status</option>
+                            <option value="completed">Completed</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="not_started">Not Started</option>
+                        </select>
+                        <button id="export-csv-btn">Export CSV</button>
+                    </div>
+                </div>
+                
+                <div id="candidates-table"></div>
+            </section>
+
+            <!-- Analytics View -->
+            <section id="analytics-view" class="view-section">
+                <h2>Analytics & Insights</h2>
+                
+                <div class="analytics-filters">
+                    <input type="date" id="date-from" placeholder="From">
+                    <input type="date" id="date-to" placeholder="To">
+                    <button id="apply-filters-btn">Apply Filters</button>
+                </div>
+
+                <div class="analytics-grid">
+                    <!-- Dimensional Averages Chart -->
+                    <div class="chart-container">
+                        <h3>Dimensional Averages</h3>
+                        <canvas id="dimensional-chart"></canvas>
+                    </div>
+
+                    <!-- Top Performers -->
+                    <div class="top-performers">
+                        <h3>Top Performers</h3>
+                        <div id="top-performers-list"></div>
+                    </div>
+
+                    <!-- Framework Distribution -->
+                    <div class="framework-distribution">
+                        <h3>Personality Type Distribution</h3>
+                        <div id="framework-chart"></div>
+                    </div>
+
+                    <!-- Trends -->
+                    <div class="trends-chart">
+                        <h3>Weekly Trends</h3>
+                        <canvas id="trends-chart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Compare View -->
+            <section id="compare-view" class="view-section">
+                <h2>Compare Candidates</h2>
+                
+                <div class="compare-selection">
+                    <div id="candidate-selector">
+                        <h3>Select Candidates to Compare</h3>
+                        <div id="candidate-checkboxes"></div>
+                        <button id="compare-btn" disabled>Compare Selected</button>
+                    </div>
+                </div>
+
+                <div id="comparison-results"></div>
+            </section>
+
+            <!-- AI Dashboard View -->
+            <section id="ai-dashboard-view" class="view-section">
+                <div id="ai-dashboard" class="ai-dashboard-container"></div>
+            </section>
+        </main>
+
+        <!-- Candidate Detail Modal -->
+        <div id="candidate-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Socket.IO -->
+    <script src="https://cdn.socket.io/4.6.2/socket.io.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- API Client -->
+    <script src="api-client.js"></script>
+    <!-- State Manager -->
+    <script src="js/state-manager.js"></script>
+    <!-- Dashboard Data Manager -->
+    <script src="js/dashboard-data-manager.js"></script>
+    <!-- AI Dashboard Component -->
+    <script src="js/components/ai-dashboard.js"></script>
+    <!-- Production Test Suite -->
+    <script src="test-suite.js"></script>
+    <!-- Dashboard Script -->
+    <script src="dashboard.js"></script>
+</body>
+</html>
+

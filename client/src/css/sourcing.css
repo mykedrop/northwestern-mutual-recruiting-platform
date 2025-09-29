@@ -1,0 +1,100 @@
+:root {
+  --blue-900: #001a4d;
+  --blue-800: #002d72; /* primary blue */
+  --blue-600: #0046a6;
+  --blue-100: #e6eef8;
+  --gold-500: #ffb81c; /* primary gold */
+}
+
+.page-bg {
+  background: linear-gradient(180deg, #ffffff 0%, var(--blue-100) 100%);
+}
+
+.sourcing-header {
+  background: linear-gradient(135deg, var(--blue-900), var(--blue-600));
+  color: #ffffff;
+  border-bottom: 4px solid var(--gold-500);
+  border-radius: 10px;
+}
+
+.input-blue {
+  border: 1px solid var(--blue-100);
+}
+.input-blue:focus {
+  outline: none;
+  border-color: var(--blue-600);
+  box-shadow: 0 0 0 3px rgba(0, 70, 166, 0.2);
+}
+
+.btn-blue {
+  background: var(--blue-600);
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 45, 114, 0.25);
+}
+.btn-blue:hover {
+  background: var(--blue-800);
+  box-shadow: 0 6px 14px rgba(0, 45, 114, 0.35);
+}
+
+.btn-gold {
+  background: var(--gold-500);
+  color: #001a4d;
+  box-shadow: 0 4px 10px rgba(255, 184, 28, 0.25);
+}
+.btn-gold:hover {
+  filter: brightness(0.95);
+  box-shadow: 0 6px 16px rgba(255, 184, 28, 0.35);
+}
+
+.card {
+  border: 1px solid var(--blue-100);
+  border-radius: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+  border-left: 4px solid transparent;
+}
+.card:hover {
+  border-color: var(--blue-600);
+  box-shadow: 0 8px 18px rgba(0, 45, 114, 0.12);
+  transform: translateY(-1px);
+}
+
+.card.accent {
+  border-left-color: var(--gold-500);
+}
+
+.muted {
+  color: var(--blue-900);
+  opacity: 0.75;
+}
+
+.score-badge {
+  color: var(--blue-800);
+  background: rgba(255, 184, 28, 0.18);
+  border: 1px solid var(--gold-500);
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-weight: 600;
+}
+
+.status-pill {
+  background: rgba(255, 184, 28, 0.15);
+  color: var(--blue-800);
+  border: 1px solid var(--gold-500);
+  border-radius: 9999px;
+}
+
+.section-title {
+  position: relative;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 56px;
+  height: 3px;
+  background: var(--gold-500);
+  border-radius: 9999px;
+}
+
+

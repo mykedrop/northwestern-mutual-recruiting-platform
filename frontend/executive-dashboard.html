@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Dashboard - Northwestern Mutual</title>
+
+    <!-- Critical Path CSS for Sub-200ms Load -->
+    <link rel="stylesheet" href="css/critical-path.css">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/northwestern-mutual-theme.css">
+    <link rel="stylesheet" href="css/professional-ui-polish.css">
+    <link rel="stylesheet" href="css/executive-dashboard.css">
+
+    <!-- High-Performance Charting -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+    <!-- Real-time Data -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body class="executive-theme">
+    <div class="executive-container">
+        <!-- Elite Header with Real-time Status -->
+        <header class="executive-header">
+            <div class="header-brand">
+                <div class="nm-logo-executive">
+                    <h1>Northwestern Mutual</h1>
+                    <span class="executive-subtitle">Executive Intelligence Dashboard</span>
+                </div>
+                <div class="real-time-indicator">
+                    <div class="pulse-dot active"></div>
+                    <span>Real-time Data</span>
+                </div>
+            </div>
+
+            <div class="executive-nav">
+                <button class="nav-pill active" data-view="overview">Overview</button>
+                <button class="nav-pill" data-view="performance">Performance</button>
+                <button class="nav-pill" data-view="predictive">Predictive Analytics</button>
+                <button class="nav-pill" data-view="competitive">Competitive Intel</button>
+                <button class="nav-pill" data-view="roi">ROI Analysis</button>
+            </div>
+
+            <div class="executive-controls">
+                <div class="time-selector">
+                    <select id="timeframe">
+                        <option value="7d">Last 7 Days</option>
+                        <option value="30d" selected>Last 30 Days</option>
+                        <option value="90d">Last 90 Days</option>
+                        <option value="1y">Last Year</option>
+                    </select>
+                </div>
+                <button class="export-executive-btn">Export Report</button>
+                <div class="user-executive">
+                    <span id="executive-user"></span>
+                    <button id="executive-logout">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Executive Overview Section -->
+        <section id="overview-section" class="executive-section active">
+            <!-- Key Performance Indicators -->
+            <div class="kpi-grid">
+                <div class="kpi-card revenue">
+                    <div class="kpi-header">
+                        <h3>Revenue Impact</h3>
+                        <div class="kpi-trend up">
+                            <span class="trend-icon">↗</span>
+                            <span class="trend-percent">+12.3%</span>
+                        </div>
+                    </div>
+                    <div class="kpi-value">$2.4M</div>
+                    <div class="kpi-subtitle">Generated from AI-sourced hires</div>
+                    <div class="kpi-chart">
+                        <canvas id="revenue-chart"></canvas>
+                    </div>
+                </div>
+
+                <div class="kpi-card efficiency">
+                    <div class="kpi-header">
+                        <h3>Hiring Efficiency</h3>
+                        <div class="kpi-trend up">
+                            <span class="trend-icon">↗</span>
+                            <span class="trend-percent">+34%</span>
+                        </div>
+                    </div>
+                    <div class="kpi-value">18 days</div>
+                    <div class="kpi-subtitle">Average time-to-hire</div>
+                    <div class="kpi-chart">
+                        <canvas id="efficiency-chart"></canvas>
+                    </div>
+                </div>
+
+                <div class="kpi-card quality">
+                    <div class="kpi-header">
+                        <h3>Hire Quality Score</h3>
+                        <div class="kpi-trend up">
+                            <span class="trend-icon">↗</span>
+                            <span class="trend-percent">+8.7%</span>
+                        </div>
+                    </div>
+                    <div class="kpi-value">94.2%</div>
+                    <div class="kpi-subtitle">AI-predicted success rate</div>
+                    <div class="kpi-chart">
+                        <canvas id="quality-chart"></canvas>
+                    </div>
+                </div>
+
+                <div class="kpi-card retention">
+                    <div class="kpi-header">
+                        <h3>Retention Rate</h3>
+                        <div class="kpi-trend up">
+                            <span class="trend-icon">↗</span>
+                            <span class="trend-percent">+15.2%</span>
+                        </div>
+                    </div>
+                    <div class="kpi-value">96.8%</div>
+                    <div class="kpi-subtitle">12-month retention</div>
+                    <div class="kpi-chart">
+                        <canvas id="retention-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Executive Summary Cards -->
+            <div class="executive-summary-grid">
+                <!-- Pipeline Health -->
+                <div class="summary-card pipeline-health">
+                    <div class="card-header">
+                        <h3>Pipeline Health</h3>
+                        <div class="health-indicator excellent">Excellent</div>
+                    </div>
+                    <div class="pipeline-metrics">
+                        <div class="metric">
+                            <span class="metric-label">Active Candidates</span>
+                            <span class="metric-value">1,247</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Qualified Leads</span>
+                            <span class="metric-value">342</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Interview Ready</span>
+                            <span class="metric-value">89</span>
+                        </div>
+                    </div>
+                    <div class="pipeline-chart">
+                        <canvas id="pipeline-health-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- AI Performance -->
+                <div class="summary-card ai-performance">
+                    <div class="card-header">
+                        <h3>AI Performance</h3>
+                        <div class="performance-score">98.3%</div>
+                    </div>
+                    <div class="ai-metrics">
+                        <div class="ai-metric">
+                            <div class="metric-icon">🎯</div>
+                            <div class="metric-content">
+                                <span class="metric-title">Prediction Accuracy</span>
+                                <span class="metric-value">94.7%</span>
+                            </div>
+                        </div>
+                        <div class="ai-metric">
+                            <div class="metric-icon">⚡</div>
+                            <div class="metric-content">
+                                <span class="metric-title">Processing Speed</span>
+                                <span class="metric-value">0.23s</span>
+                            </div>
+                        </div>
+                        <div class="ai-metric">
+                            <div class="metric-icon">🧠</div>
+                            <div class="metric-content">
+                                <span class="metric-title">Model Confidence</span>
+                                <span class="metric-value">97.1%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Market Intelligence -->
+                <div class="summary-card market-intel">
+                    <div class="card-header">
+                        <h3>Market Intelligence</h3>
+                        <div class="intel-status active">Live Data</div>
+                    </div>
+                    <div class="market-insights">
+                        <div class="insight urgent">
+                            <div class="insight-icon">⚠️</div>
+                            <div class="insight-content">
+                                <span class="insight-title">Competitor Alert</span>
+                                <span class="insight-desc">Principal Financial increasing salaries by 8%</span>
+                            </div>
+                        </div>
+                        <div class="insight opportunity">
+                            <div class="insight-icon">🎯</div>
+                            <div class="insight-content">
+                                <span class="insight-title">Market Opportunity</span>
+                                <span class="insight-desc">1,200+ financial advisors seeking new roles</span>
+                            </div>
+                        </div>
+                        <div class="insight trend">
+                            <div class="insight-icon">📈</div>
+                            <div class="insight-content">
+                                <span class="insight-title">Salary Trends</span>
+                                <span class="insight-desc">Average base increased 12% this quarter</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Analytics Section -->
+            <div class="analytics-grid">
+                <!-- Predictive Hiring Forecast -->
+                <div class="analytics-card forecast">
+                    <div class="card-header">
+                        <h3>Predictive Hiring Forecast</h3>
+                        <div class="forecast-confidence">96% Confidence</div>
+                    </div>
+                    <div class="forecast-content">
+                        <div class="forecast-chart">
+                            <canvas id="forecast-chart"></canvas>
+                        </div>
+                        <div class="forecast-insights">
+                            <div class="forecast-metric">
+                                <span class="metric-label">Expected Hires (Q1)</span>
+                                <span class="metric-value">187</span>
+                            </div>
+                            <div class="forecast-metric">
+                                <span class="metric-label">Revenue Impact</span>
+                                <span class="metric-value">$3.2M</span>
+                            </div>
+                            <div class="forecast-metric">
+                                <span class="metric-label">Success Probability</span>
+                                <span class="metric-value">94.8%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROI Analysis -->
+                <div class="analytics-card roi-analysis">
+                    <div class="card-header">
+                        <h3>Platform ROI Analysis</h3>
+                        <div class="roi-score positive">423% ROI</div>
+                    </div>
+                    <div class="roi-breakdown">
+                        <div class="roi-item">
+                            <span class="roi-label">Platform Investment</span>
+                            <span class="roi-value negative">-$180K</span>
+                        </div>
+                        <div class="roi-item">
+                            <span class="roi-label">Efficiency Savings</span>
+                            <span class="roi-value positive">+$285K</span>
+                        </div>
+                        <div class="roi-item">
+                            <span class="roi-label">Quality Improvements</span>
+                            <span class="roi-value positive">+$420K</span>
+                        </div>
+                        <div class="roi-item total">
+                            <span class="roi-label">Net Value</span>
+                            <span class="roi-value positive">+$525K</span>
+                        </div>
+                    </div>
+                    <div class="roi-chart">
+                        <canvas id="roi-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Performance Benchmarks -->
+                <div class="analytics-card benchmarks">
+                    <div class="card-header">
+                        <h3>Industry Benchmarks</h3>
+                        <div class="benchmark-status leading">Market Leading</div>
+                    </div>
+                    <div class="benchmark-grid">
+                        <div class="benchmark-item">
+                            <div class="benchmark-metric">
+                                <span class="metric-name">Time to Hire</span>
+                                <div class="metric-comparison">
+                                    <span class="our-value">18 days</span>
+                                    <span class="vs">vs</span>
+                                    <span class="industry-value">32 days</span>
+                                </div>
+                                <div class="improvement-bar">
+                                    <div class="improvement-fill" style="width: 78%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="benchmark-item">
+                            <div class="benchmark-metric">
+                                <span class="metric-name">Cost per Hire</span>
+                                <div class="metric-comparison">
+                                    <span class="our-value">$3,200</span>
+                                    <span class="vs">vs</span>
+                                    <span class="industry-value">$5,800</span>
+                                </div>
+                                <div class="improvement-bar">
+                                    <div class="improvement-fill" style="width: 82%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="benchmark-item">
+                            <div class="benchmark-metric">
+                                <span class="metric-name">Retention Rate</span>
+                                <div class="metric-comparison">
+                                    <span class="our-value">96.8%</span>
+                                    <span class="vs">vs</span>
+                                    <span class="industry-value">84.2%</span>
+                                </div>
+                                <div class="improvement-bar">
+                                    <div class="improvement-fill" style="width: 91%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Executive Alerts & Actions -->
+        <div class="executive-alerts">
+            <div class="alert-item critical">
+                <div class="alert-icon">🚨</div>
+                <div class="alert-content">
+                    <span class="alert-title">Critical: Top Performer at Risk</span>
+                    <span class="alert-desc">Sarah Johnson showing 73% flight risk - immediate action recommended</span>
+                </div>
+                <button class="alert-action">Take Action</button>
+            </div>
+
+            <div class="alert-item opportunity">
+                <div class="alert-icon">💡</div>
+                <div class="alert-content">
+                    <span class="alert-title">AI Recommendation: Market Expansion</span>
+                    <span class="alert-desc">Phoenix market shows 340% higher candidate availability</span>
+                </div>
+                <button class="alert-action">Explore</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Elite JavaScript Controllers -->
+    <script src="js/executive-dashboard-controller.js"></script>
+    <script src="js/real-time-data-engine.js"></script>
+    <script src="js/executive-charts.js"></script>
+
+    <script>
+        // Initialize Executive Dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            window.executiveDashboard = new ExecutiveDashboardController();
+            window.executiveDashboard.initialize();
+        });
+    </script>
+</body>
+</html>

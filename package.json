@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "axios": "^1.12.2",
+    "pdfkit": "^0.17.2",
+    "playwright": "^1.55.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.1",
+    "chrome-launcher": "^1.2.0",
+    "lighthouse": "^12.8.2",
+    "playwright-lighthouse": "^4.0.0",
+    "puppeteer": "^24.22.2"
+  }
+}

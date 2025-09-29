@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northwestern Mutual - Recruiter Dashboard</title>
+    <!-- Critical CSS for fast rendering -->
+    <link rel="stylesheet" href="css/critical-path.css">
+    <!-- Northwestern Mutual Design System -->
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/northwestern-mutual-theme.css">
+    <link rel="stylesheet" href="css/professional-ui-polish.css">
+
+    <!-- Legacy Styles -->
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="css/ai-dashboard.css">
+    <link rel="stylesheet" href="css/sourcing-premium.css">
+    <link rel="stylesheet" href="css/candidate-report.css">
+    <link rel="stylesheet" href="css/sourcing-enhanced.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="logo">
+                <h1>Northwestern Mutual</h1>
+                <span class="subtitle">Recruiting Intelligence Platform</span>
+            </div>
+            <nav class="dashboard-nav">
+                <button class="nav-btn active" data-view="overview">Overview</button>
+                <button class="nav-btn" data-view="candidates">Candidates</button>
+                <button class="nav-btn" data-view="pipeline">Pipeline</button>
+                <button class="nav-btn" data-view="analytics">Analytics</button>
+                <button class="nav-btn" data-view="compare">Compare</button>
+                <button class="nav-btn" data-view="ai-dashboard">AI Dashboard</button>
+                <button class="nav-btn" data-view="sourcing">Sourcing</button>
+            </nav>
+            <div class="user-menu">
+                <span id="user-name"></span>
+                <button id="logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Overview View -->
+            <section id="overview-view" class="view-section active">
+                <h2>Dashboard Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-candidates">0</div>
+                        <div class="stat-label">Total Candidates</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="completed-assessments">0</div>
+                        <div class="stat-label">Completed Assessments</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="in-progress">0</div>
+                        <div class="stat-label">In Progress</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="today-candidates">0</div>
+                        <div class="stat-label">Added Today</div>
+                    </div>
+                </div>
+                <div class="recent-activity">
+                    <h3>Recent Candidates</h3>
+                    <div id="recent-candidates-list"></div>
+                </div>
+                <div class="notifications-panel">
+                    <h3>Notifications</h3>
+                    <div id="notifications-list"></div>
+                </div>
+            </section>
+
+            <section id="candidates-view" class="view-section">
+                <div class="view-header">
+                    <h2>All Candidates</h2>
+                    <div class="actions">
+                        <input type="text" id="search-input" placeholder="Search candidates...">
+                        <select id="status-filter">
+                            <option value="">All Status</option>
+                            <option value="completed">Completed</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="not_started">Not Started</option>
+                        </select>
+                        <button id="export-csv-btn">Export CSV</button>
+                        <button id="assessment-btn" class="assessment-btn" data-action="assessment">🧠 Start Assessment</button>
+                    </div>
+                </div>
+                <div id="candidates-table"></div>
+            </section>
+
+            <section id="pipeline-view" class="view-section">
+                <h2>Candidate Pipeline</h2>
+                <div class="pipeline-container">
+                    <div class="pipeline-stage">
+                        <h3>New Leads</h3>
+                        <div class="pipeline-column" id="pipeline-new"></div>
+                    </div>
+                    <div class="pipeline-stage">
+                        <h3>Assessment</h3>
+                        <div class="pipeline-column" id="pipeline-assessment"></div>
+                    </div>
+                    <div class="pipeline-stage">
+                        <h3>Interview</h3>
+                        <div class="pipeline-column" id="pipeline-interview"></div>
+                    </div>
+                    <div class="pipeline-stage">
+                        <h3>Final Review</h3>
+                        <div class="pipeline-column" id="pipeline-review"></div>
+                    </div>
+                    <div class="pipeline-stage">
+                        <h3>Hired</h3>
+                        <div class="pipeline-column" id="pipeline-hired"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="analytics-view" class="view-section">
+                <h2>Analytics & Insights</h2>
+                <div class="analytics-filters">
+                    <input type="date" id="date-from" placeholder="From">
+                    <input type="date" id="date-to" placeholder="To">
+                    <button id="apply-filters-btn">Apply Filters</button>
+                </div>
+                <div class="analytics-grid">
+                    <div class="chart-container">
+                        <h3>Dimensional Averages</h3>
+                        <canvas id="dimensional-chart"></canvas>
+                    </div>
+                    <div class="top-performers">
+                        <h3>Top Performers</h3>
+                        <div id="top-performers-list"></div>
+                    </div>
+                    <div class="framework-distribution">
+                        <h3>Personality Type Distribution</h3>
+                        <div id="framework-chart"></div>
+                    </div>
+                    <div class="trends-chart">
+                        <h3>Weekly Trends</h3>
+                        <canvas id="trends-chart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section id="compare-view" class="view-section">
+                <h2>Compare Candidates</h2>
+                <div class="compare-selection">
+                    <div id="candidate-selector">
+                        <h3>Select Candidates to Compare</h3>
+                        <div id="candidate-checkboxes"></div>
+                        <button id="compare-btn" disabled>Compare Selected</button>
+                    </div>
+                </div>
+                <div id="comparison-results"></div>
+            </section>
+
+            <section id="ai-dashboard-view" class="view-section">
+                <div id="ai-dashboard" class="ai-dashboard-container">
+                    <div class="ai-dashboard">
+                        <div class="dashboard-section">
+                            <h2>🤖 AI Candidate Intelligence</h2>
+                            <div class="ai-insights">
+                                <div class="ai-insight prediction">
+                                    <h4>🎯 Top Prediction</h4>
+                                    <p>Sarah M. has 94% likelihood of successful hire based on behavioral analysis</p>
+                                </div>
+                                <div class="ai-insight recommendation" data-ai="recommendation">
+                                    <h4>💡 AI Recommendation</h4>
+                                    <p>Focus on candidates with Financial Services background in Philadelphia area</p>
+                                </div>
+                            </div>
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-value">127</div>
+                                    <div class="stat-label">Candidates Analyzed</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value">85%</div>
+                                    <div class="stat-label">AI Match Accuracy</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value">23</div>
+                                    <div class="stat-label">Top Matches Found</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-section">
+                            <h2>📊 Performance Analytics</h2>
+                            <div class="analytics-grid">
+                                <div class="chart-container">
+                                    <h3>Personality Type Distribution</h3>
+                                    <div class="chart-placeholder">Chart: DISC Distribution</div>
+                                </div>
+                                <div class="chart-container">
+                                    <h3>Assessment Completion Rate</h3>
+                                    <div class="chart-placeholder">Chart: Weekly Completion Trends</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-section">
+                            <h2>🎯 Smart Recommendations</h2>
+                            <div class="recommendations-list recommendations suggested-candidates" data-recommendations="true">
+                                <div class="recommendation-item">
+                                    <div class="rec-title">High Potential Candidates</div>
+                                    <div class="rec-desc">3 candidates show exceptional fit for Northwestern Mutual roles</div>
+                                    <button class="btn primary">View Details</button>
+                                </div>
+                                <div class="recommendation-item">
+                                    <div class="rec-title">Interview Optimization</div>
+                                    <div class="rec-desc">AI suggests focusing on relationship-building skills for next interviews</div>
+                                    <button class="btn primary">Apply Suggestions</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-section">
+                            <h2>🔍 Recent AI Activity</h2>
+                            <div class="activity-feed">
+                                <div class="activity-item">
+                                    <div class="activity-time">2 hours ago</div>
+                                    <div class="activity-desc">AI identified strong DISC match for Sarah Johnson</div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-time">4 hours ago</div>
+                                    <div class="activity-desc">Completed personality analysis for 5 new candidates</div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-time">1 day ago</div>
+                                    <div class="activity-desc">Generated interview briefs for upcoming sessions</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Premium Sourcing View -->
+            <section id="sourcing-view" class="view-section">
+                <div class="sourcing-header">
+                    <div class="header-content">
+                        <div class="header-title">
+                            <h2>Autonomous Sourcing</h2>
+                            <p class="header-subtitle">AI-powered candidate discovery and engagement</p>
+                        </div>
+                        <div class="header-actions">
+                            <input type="search" id="search" placeholder="Search candidates by location, skills..." style="width: 300px; padding: 8px; margin-right: 10px; border: 1px solid #ddd; border-radius: 4px;" />
+                            <button class="btn-premium" id="scan-signals-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2V14M2 8H14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                                Scan Market Signals
+                            </button>
+                            <button class="btn-premium" id="find-career-changers-btn">
+                                🔄 Find Career Changers
+                            </button>
+                            <button class="btn-premium" id="target-competitors-btn">
+                                🎯 Target Competitors
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-dashboard">
+                    <div class="stat-card premium">
+                        <div class="stat-value" id="stat-candidates-with-scores">0</div>
+                        <div class="stat-label">Active Candidates</div>
+                        <div class="stat-change neutral">Loading...</div>
+                    </div>
+                    <div class="stat-card premium">
+                        <div class="stat-value" id="stat-avg-score">0.00</div>
+                        <div class="stat-label">Avg. Engagement Score</div>
+                        <div class="stat-change neutral">Calculating...</div>
+                    </div>
+                    <div class="stat-card premium">
+                        <div class="stat-value" id="ready-to-contact">0</div>
+                        <div class="stat-label">Ready to Contact</div>
+                        <div class="stat-change neutral">Optimizing...</div>
+                    </div>
+                </div>
+
+                <div class="search-section">
+                    <div class="section-header">
+                        <h3 class="section-title">Intelligent Search</h3>
+                    </div>
+                    <div class="search-input-group">
+                        <div class="search-field">
+                            <label class="field-label">Job Title</label>
+                            <div class="input-wrapper">
+                                <svg class="input-icon" viewBox="0 0 16 16" fill="none"><path d="M14 14L10 10M11.3333 6.66667C11.3333 9.244 9.244 11.3333 6.66667 11.3333C4.08934 11.3333 2 9.244 2 6.66667C2 4.08934 4.08934 2 6.66667 2C9.244 2 11.3333 4.08934 11.3333 6.66667Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                <input id="src-title" type="text" class="search-input" placeholder="e.g., Financial Advisor, Wealth Manager" />
+                            </div>
+                        </div>
+                        <div class="search-field">
+                            <label class="field-label">Location</label>
+                            <div class="input-wrapper">
+                                <svg class="input-icon" viewBox="0 0 16 16" fill="none"><path d="M8 8.5C9.10457 8.5 10 7.60457 10 6.5C10 5.39543 9.10457 4.5 8 4.5C6.89543 4.5 6 5.39543 6 6.5C6 7.60457 6.89543 8.5 8 8.5Z" stroke="currentColor" stroke-width="1.5"/><path d="M13 6.5C13 11 8 14.5 8 14.5C8 14.5 3 11 3 6.5C3 3.5 5.5 1.5 8 1.5C10.5 1.5 13 3.5 13 6.5Z" stroke="currentColor" stroke-width="1.5"/></svg>
+                                <input id="src-location" type="text" class="search-input" placeholder="e.g., Milwaukee, Chicago, Madison" />
+                            </div>
+                        </div>
+                        <button class="btn-premium" id="src-search-btn">Search LinkedIn</button>
+                    </div>
+                    <div class="suggested-tags">
+                        <span class="tag-chip">Financial Advisor</span>
+                        <span class="tag-chip">Insurance Agent</span>
+                        <span class="tag-chip">Wealth Manager</span>
+                    </div>
+                    <div id="src-results" class="candidate-grid"></div>
+                </div>
+
+                <div class="search-section">
+                    <div class="section-header">
+                        <h3 class="section-title">Active Job Seekers</h3>
+                        <div style="display:flex; gap:12px; align-items:center;">
+                            <label class="field-label" style="margin:0;">Min Score:</label>
+                            <input id="min-score" type="number" min="0" max="1" step="0.05" value="0.5" style="width:80px; padding:6px 8px; border:1px solid var(--nm-gray-300); border-radius:6px;" />
+                            <button class="action-btn" id="refresh-seekers-btn">Refresh</button>
+                        </div>
+                    </div>
+                    <div id="active-seekers" class="candidate-grid"></div>
+                </div>
+
+                <div class="search-section">
+                    <div class="section-header">
+                        <h3 class="section-title">Saved Candidates</h3>
+                        <div class="bulk-actions">
+                            <button class="btn-premium" id="bulk-message-btn">
+                                💬 Bulk Message
+                            </button>
+                            <button class="btn-premium" id="export-results-btn">
+                                📊 Export Results
+                            </button>
+                        </div>
+                    </div>
+                    <div id="saved-candidates" class="candidate-grid"></div>
+                </div>
+            </section>
+        </main>
+
+        <div id="candidate-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Northwestern Mutual Design System -->
+    <script src="/config.js"></script>
+    <script src="js/design-system-components.js"></script>
+    <script src="js/state-management-enhanced.js"></script>
+    <script src="js/performance-optimizer.js"></script>
+    <script src="js/nm-enhancements.js"></script>
+
+    <script src="https://cdn.socket.io/4.6.2/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="api-client.js"></script>
+    <script src="js/state-manager.js"></script>
+    <script src="js/dashboard-data-manager.js"></script>
+    <script src="js/components/ai-dashboard.js"></script>
+    <script src="assets/js/sourcing.js"></script>
+    <script src="js/sourcing-enhanced.js"></script>
+    <!-- Integration layer - must load last -->
+    <script src="js/sourcing-integration.js"></script>
+    <script src="test-suite.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
+

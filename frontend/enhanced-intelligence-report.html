@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Elite Intelligence Report - Northwestern Mutual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        .report-status {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .report-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .report-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        .candidate-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .icon {
+            font-size: 20px;
+        }
+
+        .report-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .report-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .help-icon {
+            background: #007bff;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        .explanation-panel {
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .explanation-panel.active {
+            display: block;
+        }
+
+        .explanation-title {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .explanation-text {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .behavioral-dna {
+            grid-column: 1 / -1;
+        }
+
+        .dna-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .dna-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .dna-label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .dna-value {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .score-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .score-item:last-child {
+            border-bottom: none;
+        }
+
+        .score-label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .score-value {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .score-bar {
+            width: 100px;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .score-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #28a745, #20c997);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .score-number {
+            font-weight: bold;
+            color: #28a745;
+            min-width: 35px;
+        }
+
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .framework-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+        }
+
+        .framework-type {
+            font-weight: bold;
+            color: #1e3c72;
+            margin-bottom: 5px;
+        }
+
+        .framework-result {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .framework-explanation {
+            font-size: 12px;
+            color: #007bff;
+            background: rgba(0, 123, 255, 0.1);
+            padding: 8px;
+            border-radius: 4px;
+            margin-top: 8px;
+            line-height: 1.4;
+        }
+
+        .prediction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .prediction-item {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .prediction-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d63031;
+            margin-bottom: 5px;
+        }
+
+        .prediction-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .prediction-detail {
+            font-size: 11px;
+            color: #555;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 6px;
+            border-radius: 4px;
+            line-height: 1.3;
+        }
+
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .risk-item {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .risk-level {
+            font-size: 18px;
+            font-weight: bold;
+            color: #155724;
+            margin-bottom: 5px;
+        }
+
+        .risk-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .risk-detail {
+            font-size: 11px;
+            color: #155724;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 6px;
+            border-radius: 4px;
+            line-height: 1.3;
+        }
+
+        .legend-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .legend-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1e3c72;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-item {
+            margin-bottom: 12px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+
+        .legend-term {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 4px;
+        }
+
+        .legend-definition {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .recommendation-item {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .recommendation-text {
+            font-weight: 600;
+            color: #856404;
+        }
+
+        .insight-item {
+            background: #e7f3ff;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .insight-text {
+            color: #004085;
+            line-height: 1.5;
+        }
+
+        .final-verdict {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .verdict-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .verdict-text {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .verdict-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .verdict-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .actions {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1200px) {
+            .report-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .framework-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .candidate-info {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">Northwestern Mutual</div>
+            <div class="report-status">🧠 Enhanced Elite Intelligence Report</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="report-header">
+            <div class="report-title">🎯 Behavioral Intelligence Report with Comprehensive Analysis</div>
+            <div class="candidate-info">
+                <div class="info-item">
+                    <span class="icon">👤</span>
+                    <span>Sarah Johnson</span>
+                </div>
+                <div class="info-item">
+                    <span class="icon">🆔</span>
+                    <span>CAND-001-Elite</span>
+                </div>
+                <div class="info-item">
+                    <span class="icon">⏱️</span>
+                    <span>21 minutes</span>
+                </div>
+                <div class="info-item">
+                    <span class="icon">✅</span>
+                    <span>89% Consistency</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="report-grid">
+            <div class="main-content">
+                <div class="report-section behavioral-dna">
+                    <div class="section-title">
+                        <span>🧬</span>
+                        Behavioral DNA Analysis
+                        <div class="help-icon" onclick="toggleExplanation('dna-explanation')">?</div>
+                    </div>
+                    <div class="explanation-panel" id="dna-explanation">
+                        <div class="explanation-title">What is Behavioral DNA?</div>
+                        <div class="explanation-text">
+                            Behavioral DNA represents the candidate's core psychological drivers and natural behavioral patterns.
+                            These four dimensions predict how they will naturally approach work, make decisions, and interact with others.
+                        </div>
+                    </div>
+                    <div class="dna-grid">
+                        <div class="dna-item">
+                            <div class="dna-label">Primary Archetype</div>
+                            <div class="dna-value">The Empathetic Achiever</div>
+                        </div>
+                        <div class="dna-item">
+                            <div class="dna-label">Core Driver</div>
+                            <div class="dna-value">Collaborative Excellence</div>
+                        </div>
+                        <div class="dna-item">
+                            <div class="dna-label">Energy Pattern</div>
+                            <div class="dna-value">Sustainable High Performance</div>
+                        </div>
+                        <div class="dna-item">
+                            <div class="dna-label">Decision Style</div>
+                            <div class="dna-value">Consultative-Analytical</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-section">
+                    <div class="section-title">
+                        <span>📈</span>
+                        Dimensional Scores
+                        <div class="help-icon" onclick="toggleExplanation('scores-explanation')">?</div>
+                    </div>
+                    <div class="explanation-panel" id="scores-explanation">
+                        <div class="explanation-title">Understanding Dimensional Scores</div>
+                        <div class="explanation-text">
+                            These scores measure specific behavioral competencies critical for financial services success.
+                            Scores above 80% indicate strong natural ability, 60-80% shows development potential, below 60% may require significant coaching.
+                        </div>
+                    </div>
+                    <div class="score-item">
+                        <span class="score-label">Ethical Reasoning</span>
+                        <div class="score-value">
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 94%"></div>
+                            </div>
+                            <span class="score-number">94%</span>
+                        </div>
+                    </div>
+                    <div class="score-item">
+                        <span class="score-label">Emotional Regulation</span>
+                        <div class="score-value">
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 92%"></div>
+                            </div>
+                            <span class="score-number">92%</span>
+                        </div>
+                    </div>
+                    <div class="score-item">
+                        <span class="score-label">Learning Orientation</span>
+                        <div class="score-value">
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 90%"></div>
+                            </div>
+                            <span class="score-number">90%</span>
+                        </div>
+                    </div>
+                    <div class="score-item">
+                        <span class="score-label">Collaborative Intelligence</span>
+                        <div class="score-value">
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 89%"></div>
+                            </div>
+                            <span class="score-number">89%</span>
+                        </div>
+                    </div>
+                    <div class="score-item">
+                        <span class="score-label">Achievement Drive</span>
+                        <div class="score-value">
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 88%"></div>
+                            </div>
+                            <span class="score-number">88%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-section">
+                    <div class="section-title">
+                        <span>🎯</span>
+                        Personality Frameworks
+                        <div class="help-icon" onclick="toggleExplanation('frameworks-explanation')">?</div>
+                    </div>
+                    <div class="explanation-panel" id="frameworks-explanation">
+                        <div class="explanation-title">Personality Framework Integration</div>
+                        <div class="explanation-text">
+                            We use four established psychological frameworks to provide a comprehensive personality profile.
+                            Each framework offers unique insights into different aspects of behavior and work style.
+                        </div>
+                    </div>
+                    <div class="framework-grid">
+                        <div class="framework-item">
+                            <div class="framework-type">MBTI Type</div>
+                            <div class="framework-result">ENFJ</div>
+                            <div class="framework-explanation">
+                                <strong>E</strong>xtraverted: Energized by people<br>
+                                <strong>i</strong>Ntuitive: Focuses on possibilities<br>
+                                <strong>F</strong>eeling: Values-based decisions<br>
+                                <strong>J</strong>udging: Prefers structure<br>
+                                <em>"The Teacher" - Natural leader who inspires others</em>
+                            </div>
+                        </div>
+                        <div class="framework-item">
+                            <div class="framework-type">DISC Style</div>
+                            <div class="framework-result">I-S Profile</div>
+                            <div class="framework-explanation">
+                                <strong>I</strong>nfluence: Persuasive & optimistic<br>
+                                <strong>S</strong>teadiness: Supportive & collaborative<br>
+                                <em>Natural relationship builder who creates trust and stability</em>
+                            </div>
+                        </div>
+                        <div class="framework-item">
+                            <div class="framework-type">Big Five</div>
+                            <div class="framework-result">High C,A,O</div>
+                            <div class="framework-explanation">
+                                <strong>C</strong>onscientiousness: Organized & reliable<br>
+                                <strong>A</strong>greeableness: Cooperative & trusting<br>
+                                <strong>O</strong>penness: Creative & curious<br>
+                                <em>Ideal combination for client-facing financial roles</em>
+                            </div>
+                        </div>
+                        <div class="framework-item">
+                            <div class="framework-type">Enneagram</div>
+                            <div class="framework-result">Type 2</div>
+                            <div class="framework-explanation">
+                                <strong>"The Helper"</strong><br>
+                                Motivated by helping others succeed<br>
+                                Naturally attentive to client needs<br>
+                                <em>Perfect for relationship-based sales</em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-section">
+                    <div class="section-title">
+                        <span>🔮</span>
+                        Predictive Analytics
+                        <div class="help-icon" onclick="toggleExplanation('predictions-explanation')">?</div>
+                    </div>
+                    <div class="explanation-panel" id="predictions-explanation">
+                        <div class="explanation-title">Understanding Predictive Scores</div>
+                        <div class="explanation-text">
+                            These predictions are based on behavioral patterns of top performers in similar roles.
+                            Higher scores indicate stronger likelihood of success based on historical data.
+                        </div>
+                    </div>
+                    <div class="prediction-grid">
+                        <div class="prediction-item">
+                            <div class="prediction-value">89%</div>
+                            <div class="prediction-label">Success Probability</div>
+                            <div class="prediction-detail">
+                                Based on behavioral alignment with top 20% performers.
+                                High emotional intelligence and ethical reasoning are strong success predictors.
+                            </div>
+                        </div>
+                        <div class="prediction-item">
+                            <div class="prediction-value">$2.5M+</div>
+                            <div class="prediction-label">3-Year AUM Potential</div>
+                            <div class="prediction-detail">
+                                Projected assets under management based on relationship-building skills and client retention patterns.
+                            </div>
+                        </div>
+                        <div class="prediction-item">
+                            <div class="prediction-value">92%</div>
+                            <div class="prediction-label">Retention Likelihood</div>
+                            <div class="prediction-detail">
+                                High learning orientation and collaborative style strongly correlate with long-term employment satisfaction.
+                            </div>
+                        </div>
+                        <div class="prediction-item">
+                            <div class="prediction-value">86%</div>
+                            <div class="prediction-label">Team Fit Score</div>
+                            <div class="prediction-detail">
+                                ENFJ personality type and high collaborative intelligence predict excellent team integration.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-section">
+                    <div class="section-title">
+                        <span>⚠️</span>
+                        Risk Assessment
+                        <div class="help-icon" onclick="toggleExplanation('risk-explanation')">?</div>
+                    </div>
+                    <div class="explanation-panel" id="risk-explanation">
+                        <div class="explanation-title">Risk Assessment Methodology</div>
+                        <div class="explanation-text">
+                            Risk scores evaluate potential areas of concern based on behavioral patterns.
+                            LOW risk indicates strong natural alignment, MODERATE suggests manageable development needs.
+                        </div>
+                    </div>
+                    <div class="risk-grid">
+                        <div class="risk-item">
+                            <div class="risk-level">LOW</div>
+                            <div class="risk-label">Overall Risk</div>
+                            <div class="risk-detail">
+                                Strong ethical reasoning (94%) and emotional regulation (92%) indicate excellent judgment and stress management.
+                            </div>
+                        </div>
+                        <div class="risk-item">
+                            <div class="risk-level">MINIMAL</div>
+                            <div class="risk-label">Compliance Risk</div>
+                            <div class="risk-detail">
+                                Exceptional ethical reasoning score suggests natural alignment with regulatory requirements and fiduciary responsibilities.
+                            </div>
+                        </div>
+                        <div class="risk-item">
+                            <div class="risk-level">LOW</div>
+                            <div class="risk-label">Client Relations</div>
+                            <div class="risk-detail">
+                                ENFJ personality and high collaborative intelligence predict excellent client relationship management and satisfaction.
+                            </div>
+                        </div>
+                        <div class="risk-item">
+                            <div class="risk-level">LOW</div>
+                            <div class="risk-label">Performance Risk</div>
+                            <div class="risk-detail">
+                                High achievement drive (88%) and learning orientation (90%) indicate strong performance motivation and adaptability.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="legend-section">
+                    <div class="legend-title">
+                        <span>📚</span>
+                        Quick Reference Guide
+                    </div>
+
+                    <div class="legend-item">
+                        <div class="legend-term">Score Ranges</div>
+                        <div class="legend-definition">
+                            90-100%: Exceptional natural ability<br>
+                            80-89%: Strong competency<br>
+                            70-79%: Good potential with development<br>
+                            60-69%: Moderate ability, coaching needed<br>
+                            Below 60%: Significant development required
+                        </div>
+                    </div>
+
+                    <div class="legend-item">
+                        <div class="legend-term">MBTI Preferences</div>
+                        <div class="legend-definition">
+                            <strong>E</strong>xtraverted vs <strong>I</strong>ntroverted<br>
+                            <strong>S</strong>ensing vs i<strong>N</strong>tuitive<br>
+                            <strong>T</strong>hinking vs <strong>F</strong>eeling<br>
+                            <strong>J</strong>udging vs <strong>P</strong>erceiving
+                        </div>
+                    </div>
+
+                    <div class="legend-item">
+                        <div class="legend-term">DISC Styles</div>
+                        <div class="legend-definition">
+                            <strong>D</strong>ominance: Direct, results-focused<br>
+                            <strong>I</strong>nfluence: People-oriented, optimistic<br>
+                            <strong>S</strong>teadiness: Patient, loyal<br>
+                            <strong>C</strong>ompliance: Accurate, analytical
+                        </div>
+                    </div>
+
+                    <div class="legend-item">
+                        <div class="legend-term">Risk Levels</div>
+                        <div class="legend-definition">
+                            <strong>MINIMAL:</strong> No significant concerns<br>
+                            <strong>LOW:</strong> Minor considerations<br>
+                            <strong>MODERATE:</strong> Some development needed<br>
+                            <strong>HIGH:</strong> Significant attention required
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-section">
+                    <div class="section-title">
+                        <span>🎯</span>
+                        Key Hiring Insights
+                    </div>
+                    <div class="recommendation-item">
+                        <div class="recommendation-text">✅ STRONG HIRE - Top 10% Candidate</div>
+                    </div>
+                    <div class="recommendation-item">
+                        <div class="recommendation-text">📋 Financial Representative with Leadership Track</div>
+                    </div>
+                    <div class="recommendation-item">
+                        <div class="recommendation-text">🏢 High-Performance Collaborative Team</div>
+                    </div>
+                    <div class="recommendation-item">
+                        <div class="recommendation-text">👨‍💼 Coaching-Oriented Manager Ideal</div>
+                    </div>
+                </div>
+
+                <div class="report-section">
+                    <div class="section-title">
+                        <span>💎</span>
+                        Critical Success Factors
+                    </div>
+                    <div class="insight-item">
+                        <div class="insight-text">Exceptional emotional regulation enables client trust under pressure</div>
+                    </div>
+                    <div class="insight-item">
+                        <div class="insight-text">Values-based decision making aligns with NM culture</div>
+                    </div>
+                    <div class="insight-item">
+                        <div class="insight-text">Natural teaching ability perfect for client education</div>
+                    </div>
+                    <div class="insight-item">
+                        <div class="insight-text">High learning orientation ensures regulatory compliance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="final-verdict">
+            <div class="verdict-title">🏆 FINAL HIRING RECOMMENDATION</div>
+            <div class="verdict-text">ELITE TIER CANDIDATE - IMMEDIATE HIRE STRONGLY RECOMMENDED</div>
+            <div class="verdict-details">
+                <div class="verdict-item">
+                    <div>🎯 Cultural Fit</div>
+                    <div>91% - Exceptional alignment with Northwestern Mutual values</div>
+                </div>
+                <div class="verdict-item">
+                    <div>💡 Industry Aptitude</div>
+                    <div>88% - Strong financial services competency indicators</div>
+                </div>
+                <div class="verdict-item">
+                    <div>🤝 Client Potential</div>
+                    <div>94% - Outstanding relationship-building capabilities</div>
+                </div>
+                <div class="verdict-item">
+                    <div>📊 Performance Outlook</div>
+                    <div>85% - High achievement potential with proper support</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="action-btn">💾 Save Report</button>
+            <button class="action-btn">📤 Share with Team</button>
+            <button class="action-btn">📋 Schedule Interview</button>
+            <button class="action-btn">🎯 Create Offer</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleExplanation(id) {
+            const panel = document.getElementById(id);
+            const isActive = panel.classList.contains('active');
+
+            // Close all panels first
+            document.querySelectorAll('.explanation-panel').forEach(p => {
+                p.classList.remove('active');
+            });
+
+            // Open the clicked panel if it wasn't already active
+            if (!isActive) {
+                panel.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Behavioral Assessment - Northwestern Mutual</title>
+    <link rel="stylesheet" href="assets/css/assessment.css">
+</head>
+<body>
+    <div class="assessment-container">
+        <header class="assessment-header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-text">Northwestern Mutual</span>
+                </div>
+                <div class="timer" id="timer-display">0:00</div>
+            </div>
+        </header>
+        
+        <div id="welcome-screen" class="welcome-screen">
+            <h1>Behavioral Assessment</h1>
+            <p class="welcome-subtitle">
+                This assessment helps us understand your natural working style and decision-making approach. 
+                There are no right or wrong answers—please respond based on your genuine preferences and typical behaviors.
+            </p>
+            <div class="assessment-overview">
+                <h3>Assessment Overview</h3>
+                <ul>
+                    <li>• 27 scenario-based questions</li>
+                    <li>• Approximately 20 minutes to complete</li>
+                    <li>• Your responses are confidential</li>
+                    <li>• Please answer honestly based on your natural tendencies</li>
+                </ul>
+            </div>
+            <button class="start-assessment-btn">Begin Assessment</button>
+        </div>
+        
+        <div id="question-container" class="question-container" style="display: none;">
+            <div class="question-content">
+                <div class="question-header">
+                    <h2 id="question-text"></h2>
+                </div>
+                <div id="options-container" class="options-container"></div>
+            </div>
+            <div id="navigation-container" class="navigation-container">
+                <div class="progress-indicators"></div>
+            </div>
+        </div>
+        
+        <div id="completion-screen" class="completion-screen" style="display: none;">
+            <div id="results-summary"></div>
+        </div>
+    </div>
+    
+    <script src="assets/js/cheat-detection.js"></script>
+    <script src="assets/js/interactive-components.js"></script>
+    <script src="assets/js/assessment-engine.js"></script>
+</body>
+</html>
+

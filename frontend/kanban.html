@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northwestern Mutual - Candidate Pipeline</title>
+    <link rel="stylesheet" href="kanban.css">
+</head>
+<body>
+    <div class="kanban-container">
+        <!-- Header -->
+        <header class="kanban-header">
+            <div class="header-left">
+                <h1>Candidate Pipeline</h1>
+                <div class="pipeline-stats">
+                    <span id="total-candidates">0 Total</span>
+                    <span id="in-progress">0 In Progress</span>
+                    <span id="completed">0 Completed</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <input type="text" id="search-pipeline" placeholder="Search candidates...">
+                <button id="bulk-actions-btn">Bulk Actions</button>
+                <button id="refresh-btn">↻ Refresh</button>
+                <button id="back-to-dashboard">← Dashboard</button>
+            </div>
+        </header>
+
+        <!-- Kanban Board -->
+        <div class="kanban-board" id="kanban-board">
+            <!-- Columns will be dynamically generated -->
+        </div>
+
+        <!-- Candidate Detail Modal -->
+        <div id="candidate-detail-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="candidate-detail-content"></div>
+            </div>
+        </div>
+
+        <!-- Bulk Actions Modal -->
+        <div id="bulk-actions-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Bulk Actions</h2>
+                <div class="bulk-actions-form">
+                    <h3>Selected Candidates: <span id="selected-count">0</span></h3>
+                    <label>Move to Stage:</label>
+                    <select id="bulk-stage-select"></select>
+                    <button id="apply-bulk-action">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="https://cdn.socket.io/4.6.2/socket.io.min.js"></script>
+    <script src="api-client.js"></script>
+    <script src="kanban.js"></script>
+</body>
+</html>

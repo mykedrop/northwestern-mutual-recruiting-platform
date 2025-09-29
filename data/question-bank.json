@@ -1,0 +1,564 @@
+{
+  "assessment_version": "3.0",
+  "total_questions": 27,
+  "questions": [
+    {
+      "id": "q001",
+      "type": "likert_grid",
+      "prompt": "How often do these behaviors describe you?",
+      "statements": [
+        {
+          "text": "I finish tasks ahead of schedule",
+          "dimensions": {"self_management": 0.8, "achievement_drive": 0.6}
+        },
+        {
+          "text": "I help colleagues without being asked",
+          "dimensions": {"collaborative_intelligence": 0.9, "relationship_building": 0.7}
+        },
+        {
+          "text": "I challenge the status quo",
+          "dimensions": {"cognitive_flexibility": 0.8, "systems_thinking": 0.6}
+        },
+        {
+          "text": "I stay calm under pressure",
+          "dimensions": {"emotional_regulation": 0.9, "risk_tolerance": 0.5}
+        },
+        {
+          "text": "I seek feedback proactively",
+          "dimensions": {"learning_orientation": 0.9, "self_management": 0.4}
+        }
+      ]
+    },
+    {
+      "id": "q002",
+      "type": "sliding_spectrum",
+      "prompt": "Where do you fall on these spectrums?",
+      "spectrums": [
+        {
+          "left": "I process internally",
+          "right": "I think out loud",
+          "dimension": "social_calibration"
+        },
+        {
+          "left": "I prefer structure",
+          "right": "I prefer flexibility",
+          "dimension": "cognitive_flexibility"
+        },
+        {
+          "left": "I avoid risks",
+          "right": "I embrace uncertainty",
+          "dimension": "risk_tolerance"
+        }
+      ]
+    },
+    {
+      "id": "q003",
+      "type": "traditional",
+      "question": "When facing a difficult decision with no clear answer, you typically:",
+      "options": [
+        {
+          "text": "Gather more data until a clear path emerges",
+          "behavioral_indicators": ["analytical", "cautious"],
+          "score_weights": {"systems_thinking": 0.8, "risk_tolerance": 0.3}
+        },
+        {
+          "text": "Trust your instincts and move forward",
+          "behavioral_indicators": ["intuitive", "decisive"],
+          "score_weights": {"risk_tolerance": 0.8, "emotional_regulation": 0.6}
+        },
+        {
+          "text": "Seek input from multiple perspectives",
+          "behavioral_indicators": ["collaborative", "thorough"],
+          "score_weights": {"collaborative_intelligence": 0.9, "social_calibration": 0.7}
+        },
+        {
+          "text": "Break it down into smaller, manageable decisions",
+          "behavioral_indicators": ["systematic", "methodical"],
+          "score_weights": {"systems_thinking": 0.9, "self_management": 0.7}
+        }
+      ]
+    },
+    {
+      "id": "q004",
+      "type": "word_cloud",
+      "prompt": "Select 5 words that best describe your work style:",
+      "selectCount": 5,
+      "words": [
+        {"text": "Strategic", "dimensions": {"systems_thinking": 0.9, "achievement_drive": 0.6}},
+        {"text": "Empathetic", "dimensions": {"social_calibration": 0.8, "relationship_building": 0.9}},
+        {"text": "Methodical", "dimensions": {"self_management": 0.9, "systems_thinking": 0.7}},
+        {"text": "Adaptable", "dimensions": {"cognitive_flexibility": 0.9, "risk_tolerance": 0.6}},
+        {"text": "Driven", "dimensions": {"achievement_drive": 0.9}},
+        {"text": "Creative", "dimensions": {"cognitive_flexibility": 0.8, "learning_orientation": 0.6}},
+        {"text": "Reliable", "dimensions": {"self_management": 0.8, "ethical_reasoning": 0.7}},
+        {"text": "Analytical", "dimensions": {"systems_thinking": 0.9}},
+        {"text": "Collaborative", "dimensions": {"collaborative_intelligence": 0.9}},
+        {"text": "Independent", "dimensions": {"self_management": 0.7, "achievement_drive": 0.6}},
+        {"text": "Patient", "dimensions": {"emotional_regulation": 0.8}},
+        {"text": "Innovative", "dimensions": {"cognitive_flexibility": 0.9, "learning_orientation": 0.8}},
+        {"text": "Decisive", "dimensions": {"risk_tolerance": 0.7, "achievement_drive": 0.7}},
+        {"text": "Supportive", "dimensions": {"collaborative_intelligence": 0.8, "relationship_building": 0.8}},
+        {"text": "Organized", "dimensions": {"self_management": 0.9}}
+      ]
+    },
+    {
+      "id": "q005",
+      "type": "priority_matrix",
+      "prompt": "Place these daily activities in the appropriate quadrants:",
+      "items": [
+        {"text": "Email responses", "ideal_quadrant": "3", "dimensions": {"self_management": 0.7}},
+        {"text": "Strategic planning", "ideal_quadrant": "2", "dimensions": {"systems_thinking": 0.9, "cognitive_flexibility": 0.6}},
+        {"text": "Crisis management", "ideal_quadrant": "1", "dimensions": {"emotional_regulation": 0.8, "risk_tolerance": 0.7}},
+        {"text": "Social media", "ideal_quadrant": "4", "dimensions": {"social_calibration": 0.5}},
+        {"text": "Team development", "ideal_quadrant": "2", "dimensions": {"collaborative_intelligence": 0.9, "relationship_building": 0.8}},
+        {"text": "Client emergencies", "ideal_quadrant": "1", "dimensions": {"relationship_building": 0.9, "emotional_regulation": 0.8}},
+        {"text": "Learning new skills", "ideal_quadrant": "2", "dimensions": {"learning_orientation": 0.9, "cognitive_flexibility": 0.7}},
+        {"text": "Routine reports", "ideal_quadrant": "4", "dimensions": {"self_management": 0.6}}
+      ]
+    },
+    {
+      "id": "q006",
+      "type": "traditional",
+      "question": "A colleague takes credit for your idea in a meeting. You:",
+      "options": [
+        {
+          "text": "Address it privately with them afterwards",
+          "behavioral_indicators": ["diplomatic", "assertive"],
+          "score_weights": {"social_calibration": 0.8, "emotional_regulation": 0.7}
+        },
+        {
+          "text": "Clarify ownership during the meeting diplomatically",
+          "behavioral_indicators": ["confident", "professional"],
+          "score_weights": {"influence_style": 0.8, "risk_tolerance": 0.6}
+        },
+        {
+          "text": "Document your ideas in writing going forward",
+          "behavioral_indicators": ["strategic", "preventive"],
+          "score_weights": {"systems_thinking": 0.8, "self_management": 0.7}
+        },
+        {
+          "text": "Let it go and focus on the next opportunity",
+          "behavioral_indicators": ["forward-focused", "resilient"],
+          "score_weights": {"emotional_regulation": 0.7, "cognitive_flexibility": 0.6}
+        }
+      ]
+    },
+    {
+      "id": "q007",
+      "type": "emoji_reaction",
+      "scenario": "You've just been asked to present to senior leadership with no preparation time.",
+      "reactions": [
+        {"emoji": "😰", "label": "Anxious", "type": "anxiety", "dimensions": {"emotional_regulation": 0.3}},
+        {"emoji": "💪", "label": "Challenge accepted", "type": "confident", "dimensions": {"risk_tolerance": 0.8, "achievement_drive": 0.8}},
+        {"emoji": "🤔", "label": "Strategic", "type": "analytical", "dimensions": {"systems_thinking": 0.8, "emotional_regulation": 0.6}},
+        {"emoji": "😤", "label": "Frustrated", "type": "anger", "dimensions": {"emotional_regulation": 0.2}},
+        {"emoji": "😎", "label": "Cool with it", "type": "calm", "dimensions": {"emotional_regulation": 0.9, "risk_tolerance": 0.7}}
+      ]
+    },
+    {
+      "id": "q008",
+      "type": "speed_ranking",
+      "prompt": "Quick! Rank what drives you most:",
+      "items": [
+        {"text": "Recognition", "dimensions": {"achievement_drive": 0.9}},
+        {"text": "Stability", "dimensions": {"risk_tolerance": -0.8, "self_management": 0.6}},
+        {"text": "Growth", "dimensions": {"learning_orientation": 0.9}},
+        {"text": "Impact", "dimensions": {"influence_style": 0.8, "achievement_drive": 0.6}},
+        {"text": "Balance", "dimensions": {"self_management": 0.7, "emotional_regulation": 0.6}}
+      ]
+    },
+    {
+      "id": "q009",
+      "type": "traditional",
+      "question": "Your preferred way to learn something new is:",
+      "options": [
+        {
+          "text": "Dive in and learn by doing",
+          "behavioral_indicators": ["hands-on", "experiential"],
+          "score_weights": {"learning_orientation": 0.8, "risk_tolerance": 0.7}
+        },
+        {
+          "text": "Study the theory first, then practice",
+          "behavioral_indicators": ["methodical", "thorough"],
+          "score_weights": {"systems_thinking": 0.8, "self_management": 0.7}
+        },
+        {
+          "text": "Learn alongside others in a group",
+          "behavioral_indicators": ["collaborative", "social"],
+          "score_weights": {"collaborative_intelligence": 0.9, "social_calibration": 0.7}
+        },
+        {
+          "text": "Find a mentor to guide you",
+          "behavioral_indicators": ["relationship-focused", "structured"],
+          "score_weights": {"relationship_building": 0.8, "learning_orientation": 0.7}
+        }
+      ]
+    },
+    {
+      "id": "q010",
+      "type": "percentage_allocator",
+      "prompt": "You have 100 points. Distribute them based on what motivates you:",
+      "categories": [
+        {"id": "achievement", "label": "Personal achievement", "dimensions": {"achievement_drive": 0.9}},
+        {"id": "helping", "label": "Helping others succeed", "dimensions": {"relationship_building": 0.9, "collaborative_intelligence": 0.7}},
+        {"id": "learning", "label": "Continuous learning", "dimensions": {"learning_orientation": 0.9}},
+        {"id": "security", "label": "Financial security", "dimensions": {"risk_tolerance": -0.7, "self_management": 0.6}},
+        {"id": "freedom", "label": "Autonomy and freedom", "dimensions": {"cognitive_flexibility": 0.8, "risk_tolerance": 0.6}}
+      ]
+    },
+    {
+      "id": "q011",
+      "type": "two_pile_sort",
+      "prompt": "Sort these work activities:",
+      "pileA": "Energizes Me",
+      "pileB": "Drains Me",
+      "items": [
+        {"text": "Networking events", "dimensions": {"social_calibration": 0.8, "relationship_building": 0.7}},
+        {"text": "Data analysis", "dimensions": {"systems_thinking": 0.9, "cognitive_flexibility": 0.6}},
+        {"text": "Conflict resolution", "dimensions": {"emotional_regulation": 0.9, "social_calibration": 0.8}},
+        {"text": "Public speaking", "dimensions": {"influence_style": 0.9, "risk_tolerance": 0.7}},
+        {"text": "Detailed planning", "dimensions": {"self_management": 0.9, "systems_thinking": 0.7}},
+        {"text": "Brainstorming", "dimensions": {"cognitive_flexibility": 0.9, "learning_orientation": 0.6}},
+        {"text": "Routine tasks", "dimensions": {"self_management": 0.6, "achievement_drive": 0.3}},
+        {"text": "Mentoring others", "dimensions": {"relationship_building": 0.9, "collaborative_intelligence": 0.8}}
+      ]
+    },
+    {
+      "id": "q012",
+      "type": "traditional",
+      "question": "When working on a team project, you naturally gravitate toward:",
+      "options": [
+        {
+          "text": "Leading and coordinating the team",
+          "behavioral_indicators": ["leadership", "organizing"],
+          "score_weights": {"influence_style": 0.9, "achievement_drive": 0.7}
+        },
+        {
+          "text": "Supporting others and ensuring harmony",
+          "behavioral_indicators": ["supportive", "collaborative"],
+          "score_weights": {"collaborative_intelligence": 0.9, "relationship_building": 0.8}
+        },
+        {
+          "text": "Analyzing and improving the process",
+          "behavioral_indicators": ["analytical", "systematic"],
+          "score_weights": {"systems_thinking": 0.9, "self_management": 0.6}
+        },
+        {
+          "text": "Executing tasks independently",
+          "behavioral_indicators": ["independent", "focused"],
+          "score_weights": {"self_management": 0.8, "achievement_drive": 0.6}
+        }
+      ]
+    },
+    {
+      "id": "q013",
+      "type": "likert_grid",
+      "prompt": "Rate how accurately these describe you:",
+      "statements": [
+        {
+          "text": "I thrive in ambiguous situations",
+          "dimensions": {"cognitive_flexibility": 0.9, "risk_tolerance": 0.7}
+        },
+        {
+          "text": "I build trust quickly with new people",
+          "dimensions": {"relationship_building": 0.9, "social_calibration": 0.8}
+        },
+        {
+          "text": "I stick to commitments even when difficult",
+          "dimensions": {"ethical_reasoning": 0.9, "self_management": 0.8}
+        },
+        {
+          "text": "I see patterns others miss",
+          "dimensions": {"systems_thinking": 0.9, "cognitive_flexibility": 0.6}
+        },
+        {
+          "text": "I bounce back quickly from setbacks",
+          "dimensions": {"emotional_regulation": 0.9, "achievement_drive": 0.6}
+        }
+      ]
+    },
+    {
+      "id": "q014",
+      "type": "traditional",
+      "question": "Your ideal work environment would be:",
+      "options": [
+        {
+          "text": "Fast-paced with constant new challenges",
+          "behavioral_indicators": ["dynamic", "stimulation-seeking"],
+          "score_weights": {"risk_tolerance": 0.8, "cognitive_flexibility": 0.8}
+        },
+        {
+          "text": "Structured with clear expectations",
+          "behavioral_indicators": ["organized", "predictable"],
+          "score_weights": {"self_management": 0.9, "risk_tolerance": 0.3}
+        },
+        {
+          "text": "Collaborative with strong team bonds",
+          "behavioral_indicators": ["team-oriented", "social"],
+          "score_weights": {"collaborative_intelligence": 0.9, "relationship_building": 0.8}
+        },
+        {
+          "text": "Autonomous with minimal oversight",
+          "behavioral_indicators": ["independent", "self-directed"],
+          "score_weights": {"self_management": 0.7, "achievement_drive": 0.7}
+        }
+      ]
+    },
+    {
+      "id": "q015",
+      "type": "sliding_spectrum",
+      "prompt": "Position yourself on these work style spectrums:",
+      "spectrums": [
+        {
+          "left": "Detail-focused",
+          "right": "Big-picture focused",
+          "dimension": "systems_thinking"
+        },
+        {
+          "left": "People-oriented",
+          "right": "Task-oriented",
+          "dimension": "relationship_building"
+        },
+        {
+          "left": "Steady pace",
+          "right": "Work in bursts",
+          "dimension": "self_management"
+        }
+      ]
+    },
+    {
+      "id": "q016",
+      "type": "emoji_reaction",
+      "scenario": "A major project you led has failed despite your best efforts.",
+      "reactions": [
+        {"emoji": "📊", "label": "Analyze what went wrong", "type": "analytical", "dimensions": {"systems_thinking": 0.9, "learning_orientation": 0.8}},
+        {"emoji": "🎯", "label": "Focus on the next goal", "type": "forward", "dimensions": {"achievement_drive": 0.8, "emotional_regulation": 0.7}},
+        {"emoji": "😔", "label": "Feel disappointed", "type": "emotional", "dimensions": {"emotional_regulation": 0.4}},
+        {"emoji": "🤝", "label": "Rally the team", "type": "collaborative", "dimensions": {"collaborative_intelligence": 0.8, "influence_style": 0.7}},
+        {"emoji": "💭", "label": "Reflect privately", "type": "introspective", "dimensions": {"self_management": 0.7, "learning_orientation": 0.6}}
+      ]
+    },
+    {
+      "id": "q017",
+      "type": "traditional",
+      "question": "When making important decisions, you rely most on:",
+      "options": [
+        {
+          "text": "Logic and data analysis",
+          "behavioral_indicators": ["analytical", "objective"],
+          "score_weights": {"systems_thinking": 0.9, "ethical_reasoning": 0.5}
+        },
+        {
+          "text": "Intuition and experience",
+          "behavioral_indicators": ["intuitive", "experiential"],
+          "score_weights": {"risk_tolerance": 0.7, "cognitive_flexibility": 0.7}
+        },
+        {
+          "text": "Impact on people involved",
+          "behavioral_indicators": ["empathetic", "considerate"],
+          "score_weights": {"relationship_building": 0.9, "social_calibration": 0.8}
+        },
+        {
+          "text": "Alignment with values and principles",
+          "behavioral_indicators": ["principled", "ethical"],
+          "score_weights": {"ethical_reasoning": 0.9, "self_management": 0.6}
+        }
+      ]
+    },
+    {
+      "id": "q018",
+      "type": "word_cloud",
+      "prompt": "Select 5 traits you'd want colleagues to use to describe you:",
+      "selectCount": 5,
+      "words": [
+        {"text": "Trustworthy", "dimensions": {"ethical_reasoning": 0.9, "relationship_building": 0.7}},
+        {"text": "Innovative", "dimensions": {"cognitive_flexibility": 0.9, "learning_orientation": 0.7}},
+        {"text": "Dependable", "dimensions": {"self_management": 0.9, "ethical_reasoning": 0.6}},
+        {"text": "Inspiring", "dimensions": {"influence_style": 0.9, "achievement_drive": 0.6}},
+        {"text": "Thoughtful", "dimensions": {"systems_thinking": 0.7, "social_calibration": 0.7}},
+        {"text": "Ambitious", "dimensions": {"achievement_drive": 0.9}},
+        {"text": "Flexible", "dimensions": {"cognitive_flexibility": 0.9, "collaborative_intelligence": 0.5}},
+        {"text": "Logical", "dimensions": {"systems_thinking": 0.9}},
+        {"text": "Warm", "dimensions": {"relationship_building": 0.8, "social_calibration": 0.8}},
+        {"text": "Efficient", "dimensions": {"self_management": 0.8, "achievement_drive": 0.6}},
+        {"text": "Visionary", "dimensions": {"systems_thinking": 0.7, "influence_style": 0.8}},
+        {"text": "Steady", "dimensions": {"emotional_regulation": 0.8, "self_management": 0.7}},
+        {"text": "Bold", "dimensions": {"risk_tolerance": 0.9, "influence_style": 0.6}},
+        {"text": "Caring", "dimensions": {"relationship_building": 0.9, "collaborative_intelligence": 0.7}},
+        {"text": "Precise", "dimensions": {"self_management": 0.8, "systems_thinking": 0.7}}
+      ]
+    },
+    {
+      "id": "q019",
+      "type": "speed_ranking",
+      "prompt": "Quick! Rank these work situations from most to least comfortable:",
+      "items": [
+        {"text": "Leading a meeting", "dimensions": {"influence_style": 0.8}},
+        {"text": "Working alone on complex problems", "dimensions": {"systems_thinking": 0.8, "self_management": 0.6}},
+        {"text": "Mediating conflicts", "dimensions": {"emotional_regulation": 0.8, "social_calibration": 0.8}},
+        {"text": "Presenting to large groups", "dimensions": {"influence_style": 0.9, "risk_tolerance": 0.6}},
+        {"text": "Building consensus", "dimensions": {"collaborative_intelligence": 0.8, "relationship_building": 0.7}}
+      ]
+    },
+    {
+      "id": "q020",
+      "type": "traditional",
+      "question": "You receive constructive criticism about your work. Your first instinct is to:",
+      "options": [
+        {
+          "text": "Analyze the feedback objectively",
+          "behavioral_indicators": ["analytical", "growth-minded"],
+          "score_weights": {"learning_orientation": 0.9, "emotional_regulation": 0.7}
+        },
+        {
+          "text": "Consider the source and context",
+          "behavioral_indicators": ["contextual", "evaluative"],
+          "score_weights": {"systems_thinking": 0.8, "social_calibration": 0.7}
+        },
+        {
+          "text": "Feel defensive but hide it",
+          "behavioral_indicators": ["controlled", "private"],
+          "score_weights": {"emotional_regulation": 0.5, "social_calibration": 0.6}
+        },
+        {
+          "text": "Immediately work on improvements",
+          "behavioral_indicators": ["action-oriented", "responsive"],
+          "score_weights": {"achievement_drive": 0.8, "learning_orientation": 0.7}
+        }
+      ]
+    },
+    {
+      "id": "q021",
+      "type": "percentage_allocator",
+      "prompt": "Allocate 100 points based on how you prefer to spend your energy at work:",
+      "categories": [
+        {"id": "creating", "label": "Creating new solutions", "dimensions": {"cognitive_flexibility": 0.9, "learning_orientation": 0.6}},
+        {"id": "executing", "label": "Executing plans", "dimensions": {"self_management": 0.8, "achievement_drive": 0.7}},
+        {"id": "connecting", "label": "Building relationships", "dimensions": {"relationship_building": 0.9, "social_calibration": 0.7}},
+        {"id": "analyzing", "label": "Analyzing information", "dimensions": {"systems_thinking": 0.9}},
+        {"id": "influencing", "label": "Influencing others", "dimensions": {"influence_style": 0.9, "achievement_drive": 0.5}}
+      ]
+    },
+    {
+      "id": "q022",
+      "type": "two_pile_sort",
+      "prompt": "Sort these workplace scenarios:",
+      "pileA": "I Excel At This",
+      "pileB": "I Find This Challenging",
+      "items": [
+        {"text": "Giving difficult feedback", "dimensions": {"social_calibration": 0.9, "influence_style": 0.7}},
+        {"text": "Managing multiple deadlines", "dimensions": {"self_management": 0.9, "systems_thinking": 0.6}},
+        {"text": "Adapting to sudden changes", "dimensions": {"cognitive_flexibility": 0.9, "risk_tolerance": 0.7}},
+        {"text": "Building team morale", "dimensions": {"influence_style": 0.8, "collaborative_intelligence": 0.8}},
+        {"text": "Detailed documentation", "dimensions": {"self_management": 0.8, "systems_thinking": 0.6}},
+        {"text": "Strategic planning", "dimensions": {"systems_thinking": 0.9, "cognitive_flexibility": 0.7}},
+        {"text": "Handling criticism", "dimensions": {"emotional_regulation": 0.9, "learning_orientation": 0.6}},
+        {"text": "Innovating processes", "dimensions": {"cognitive_flexibility": 0.9, "learning_orientation": 0.7}}
+      ]
+    },
+    {
+      "id": "q023",
+      "type": "traditional",
+      "question": "In a crisis situation, others can count on you to:",
+      "options": [
+        {
+          "text": "Stay calm and think clearly",
+          "behavioral_indicators": ["composed", "rational"],
+          "score_weights": {"emotional_regulation": 0.9, "systems_thinking": 0.7}
+        },
+        {
+          "text": "Take charge and direct action",
+          "behavioral_indicators": ["leadership", "decisive"],
+          "score_weights": {"influence_style": 0.9, "achievement_drive": 0.7}
+        },
+        {
+          "text": "Support and encourage others",
+          "behavioral_indicators": ["supportive", "empathetic"],
+          "score_weights": {"relationship_building": 0.9, "collaborative_intelligence": 0.8}
+        },
+        {
+          "text": "Find creative solutions",
+          "behavioral_indicators": ["innovative", "resourceful"],
+          "score_weights": {"cognitive_flexibility": 0.9, "risk_tolerance": 0.6}
+        }
+      ]
+    },
+    {
+      "id": "q024",
+      "type": "priority_matrix",
+      "prompt": "Organize these professional development activities:",
+      "items": [
+        {"text": "Industry certifications", "ideal_quadrant": "2", "dimensions": {"learning_orientation": 0.9, "achievement_drive": 0.7}},
+        {"text": "Networking lunches", "ideal_quadrant": "3", "dimensions": {"relationship_building": 0.8, "social_calibration": 0.7}},
+        {"text": "Critical skill gaps", "ideal_quadrant": "1", "dimensions": {"learning_orientation": 0.9, "achievement_drive": 0.8}},
+        {"text": "Optional workshops", "ideal_quadrant": "4", "dimensions": {"learning_orientation": 0.6, "cognitive_flexibility": 0.5}},
+        {"text": "Mentorship meetings", "ideal_quadrant": "2", "dimensions": {"relationship_building": 0.9, "learning_orientation": 0.8}},
+        {"text": "Compliance training", "ideal_quadrant": "1", "dimensions": {"ethical_reasoning": 0.8, "self_management": 0.7}},
+        {"text": "Conference attendance", "ideal_quadrant": "3", "dimensions": {"learning_orientation": 0.7, "social_calibration": 0.6}},
+        {"text": "Hobby learning", "ideal_quadrant": "4", "dimensions": {"learning_orientation": 0.6, "cognitive_flexibility": 0.5}}
+      ]
+    },
+    {
+      "id": "q025",
+      "type": "emoji_reaction",
+      "scenario": "You discover a colleague has been undermining your work behind your back.",
+      "reactions": [
+        {"emoji": "😤", "label": "Confront directly", "type": "confrontational", "dimensions": {"influence_style": 0.7, "risk_tolerance": 0.7}},
+        {"emoji": "📝", "label": "Document everything", "type": "strategic", "dimensions": {"systems_thinking": 0.8, "self_management": 0.8}},
+        {"emoji": "🗣️", "label": "Talk to manager", "type": "escalate", "dimensions": {"ethical_reasoning": 0.7, "social_calibration": 0.6}},
+        {"emoji": "🧘", "label": "Rise above it", "type": "transcend", "dimensions": {"emotional_regulation": 0.8, "cognitive_flexibility": 0.6}},
+        {"emoji": "🤔", "label": "Understand why", "type": "empathetic", "dimensions": {"social_calibration": 0.8, "relationship_building": 0.7}}
+      ]
+    },
+    {
+      "id": "q026",
+      "type": "sliding_spectrum",
+      "prompt": "Final self-assessment on these dimensions:",
+      "spectrums": [
+        {
+          "left": "Follow established methods",
+          "right": "Create new approaches",
+          "dimension": "learning_orientation"
+        },
+        {
+          "left": "Work best alone",
+          "right": "Work best with others",
+          "dimension": "collaborative_intelligence"
+        },
+        {
+          "left": "Driven by security",
+          "right": "Driven by growth",
+          "dimension": "achievement_drive"
+        }
+      ]
+    },
+    {
+      "id": "q027",
+      "type": "traditional",
+      "question": "Looking back at your career/life choices, the pattern that emerges is:",
+      "options": [
+        {
+          "text": "Steady progression toward clear goals",
+          "behavioral_indicators": ["planned", "strategic"],
+          "score_weights": {"achievement_drive": 0.8, "self_management": 0.8}
+        },
+        {
+          "text": "Following opportunities as they appeared",
+          "behavioral_indicators": ["opportunistic", "flexible"],
+          "score_weights": {"cognitive_flexibility": 0.8, "risk_tolerance": 0.7}
+        },
+        {
+          "text": "Building meaningful relationships and impact",
+          "behavioral_indicators": ["relationship-focused", "purpose-driven"],
+          "score_weights": {"relationship_building": 0.9, "ethical_reasoning": 0.7}
+        },
+        {
+          "text": "Continuous learning and exploration",
+          "behavioral_indicators": ["curious", "growth-oriented"],
+          "score_weights": {"learning_orientation": 0.9, "cognitive_flexibility": 0.7}
+        }
+      ]
+    }
+  ]
+}
+

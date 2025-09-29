@@ -1,0 +1,344 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f0f2f5;
+    color: #1a1a1a;
+}
+
+/* Header */
+.kanban-header {
+    background: white;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-left h1 {
+    font-size: 1.75rem;
+    color: #003d82;
+    margin-bottom: 0.5rem;
+}
+
+.pipeline-stats {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.pipeline-stats span {
+    padding: 0.25rem 0.75rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.header-right {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+#search-pipeline {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 250px;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    background: #003d82;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #00265d;
+}
+
+#back-to-dashboard {
+    background: #6c757d;
+}
+
+#back-to-dashboard:hover {
+    background: #5a6268;
+}
+
+/* Kanban Board */
+.kanban-board {
+    display: flex;
+    gap: 1rem;
+    padding: 2rem;
+    overflow-x: auto;
+    min-height: calc(100vh - 120px);
+    align-items: flex-start;
+}
+
+.kanban-column {
+    background: white;
+    border-radius: 8px;
+    min-width: 320px;
+    max-width: 320px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 160px);
+}
+
+.column-header {
+    padding: 1rem;
+    border-bottom: 3px solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.column-title {
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.column-count {
+    background: rgba(0,0,0,0.1);
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.column-cards {
+    padding: 1rem;
+    flex: 1;
+    overflow-y: auto;
+    min-height: 100px;
+}
+
+/* Candidate Cards */
+.candidate-card {
+    background: white;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    cursor: grab;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.candidate-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.candidate-card.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+}
+
+.candidate-card.selected {
+    border-color: #003d82;
+    background: #f0f7ff;
+}
+
+.card-checkbox {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+.candidate-name {
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+}
+
+.candidate-email {
+    color: #666;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.candidate-meta {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.meta-tag {
+    padding: 0.2rem 0.5rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    color: #495057;
+}
+
+.meta-tag.assessment-complete {
+    background: #d4edda;
+    color: #155724;
+}
+
+.meta-tag.high-fit {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.candidate-score {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #e1e4e8;
+    font-size: 0.75rem;
+}
+
+.score-label {
+    color: #666;
+}
+
+.score-value {
+    font-weight: 600;
+    color: #003d82;
+}
+
+/* Drop Zone */
+.drop-zone {
+    min-height: 100px;
+    border: 2px dashed transparent;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.drop-zone.drag-over {
+    border-color: #003d82;
+    background: rgba(0, 61, 130, 0.05);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    animation: fadeIn 0.2s;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 8px;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: slideIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-modal {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #000;
+}
+
+/* Bulk Actions */
+.bulk-actions-form {
+    margin-top: 1.5rem;
+}
+
+.bulk-actions-form h3 {
+    margin-bottom: 1rem;
+    color: #003d82;
+}
+
+.bulk-actions-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.bulk-actions-form select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.bulk-actions-form button {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+}
+
+/* Loading State */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0,0,0,0.1);
+    border-radius: 50%;
+    border-top-color: #003d82;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .kanban-board {
+        padding: 1rem;
+    }
+    
+    .kanban-column {
+        min-width: 280px;
+    }
+    
+    .header-right {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    #search-pipeline {
+        width: 100%;
+    }
+}

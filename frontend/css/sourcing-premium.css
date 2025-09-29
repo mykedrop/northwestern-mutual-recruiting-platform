@@ -1,0 +1,94 @@
+/* Northwestern Mutual - Sourcing Premium Styles (scoped) */
+#sourcing-view {
+  --nm-primary: #003d82;
+  --nm-primary-dark: #00265d;
+  --nm-primary-light: #0056b3;
+  --nm-accent-gold: #D4AF37;
+  --nm-accent-warm: #8B6F47;
+  --nm-success: #047857;
+  --nm-warning: #B45309;
+  --nm-danger: #991B1B;
+  --nm-info: #1E40AF;
+  --nm-gray-50: #FAFAFA;
+  --nm-gray-100: #F4F4F5;
+  --nm-gray-200: #E4E4E7;
+  --nm-gray-300: #D4D4D8;
+  --nm-gray-400: #A1A1AA;
+  --nm-gray-500: #71717A;
+  --nm-gray-600: #52525B;
+  --nm-gray-700: #3F3F46;
+  --nm-gray-800: #27272A;
+  --nm-gray-900: #18181B;
+}
+
+#sourcing-view * { box-sizing: border-box; }
+#sourcing-view { background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%); min-height: calc(100vh - 60px); }
+
+#sourcing-view .sourcing-header { background: linear-gradient(135deg, var(--nm-primary) 0%, var(--nm-primary-dark) 100%); padding: 32px 32px 24px; margin: -20px -20px 32px -20px; box-shadow: 0 10px 15px -3px rgba(0,0,0,.12); }
+#sourcing-view .header-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; }
+#sourcing-view .header-title h2 { color: #fff; font-size: 32px; font-weight: 600; margin: 0 0 8px 0; letter-spacing: -0.5px; }
+#sourcing-view .header-subtitle { color: rgba(255,255,255,.9); font-size: 16px; margin: 0; }
+#sourcing-view .header-actions { display: flex; gap: 12px; align-items: center; }
+
+#sourcing-view .btn-premium { background: linear-gradient(135deg, var(--nm-accent-gold) 0%, #B8941F 100%); color: var(--nm-primary-dark); border: none; padding: 12px 24px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: all .2s ease; box-shadow: 0 4px 6px rgba(212,175,55,.25); }
+#sourcing-view .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(212,175,55,.35); }
+#sourcing-view .btn-premium.loading { position: relative; color: transparent; pointer-events: none; }
+#sourcing-view .btn-premium.loading::after { content: ""; position: absolute; width: 16px; height: 16px; top: 50%; left: 50%; margin: -8px 0 0 -8px; border: 2px solid var(--nm-primary-dark); border-radius: 50%; border-top-color: transparent; animation: spinner .6s linear infinite; }
+@keyframes spinner { to { transform: rotate(360deg); } }
+
+#sourcing-view .stats-dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; padding: 0 32px; margin: 0 auto 32px; max-width: 1400px; }
+#sourcing-view .stat-card.premium { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,.08); border: 1px solid var(--nm-gray-200); position: relative; overflow: hidden; transition: transform .3s ease, box-shadow .3s ease; }
+#sourcing-view .stat-card.premium::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--nm-primary) 0%, var(--nm-accent-gold) 100%); transform: translateY(-4px); transition: transform .3s ease; }
+#sourcing-view .stat-card.premium:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0,0,0,.12); }
+#sourcing-view .stat-card.premium:hover::before { transform: translateY(0); }
+#sourcing-view .stat-card .stat-value { font-size: 32px; font-weight: 700; color: var(--nm-gray-900); line-height: 1.2; margin-bottom: 4px; }
+#sourcing-view .stat-card .stat-label { font-size: 14px; color: var(--nm-gray-600); font-weight: 500; }
+
+#sourcing-view .search-section { background: #fff; border-radius: 16px; padding: 28px; margin: 0 32px 32px; max-width: 1400px; margin-left: auto; margin-right: auto; box-shadow: 0 1px 3px rgba(0,0,0,.08); border: 1px solid var(--nm-gray-200); }
+#sourcing-view .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--nm-gray-200); }
+#sourcing-view .section-title { font-size: 20px; font-weight: 600; color: var(--nm-gray-900); margin: 0; }
+#sourcing-view .search-input-group { display: grid; grid-template-columns: 1fr 1fr auto; gap: 20px; align-items: stretch; }
+#sourcing-view .search-input-group .search-field .input-wrapper, 
+#sourcing-view .search-input-group .search-field .search-input { height: 42px; }
+#sourcing-view .search-input-group .search-field .search-input { display: block; line-height: 42px; padding-top: 0; padding-bottom: 0; }
+#sourcing-view .field-label { font-size: 13px; font-weight: 600; color: var(--nm-gray-700); text-transform: uppercase; letter-spacing: .5px; }
+#sourcing-view .input-wrapper { position: relative; }
+#sourcing-view .input-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; stroke: var(--nm-gray-500); pointer-events: none; }
+#sourcing-view .search-input { width: 100%; padding: 12px 14px 12px 42px; border: 2px solid var(--nm-gray-300); border-radius: 8px; font-size: 15px; transition: all .2s ease; background: #fff; }
+#sourcing-view .search-input:focus { outline: none; border-color: var(--nm-primary); box-shadow: 0 0 0 3px rgba(0,61,130,.1); }
+#sourcing-view .suggested-tags { display: flex; gap: 8px; margin-top: 12px; }
+#sourcing-view .tag-chip { display: inline-flex; align-items: center; padding: 6px 12px; background: var(--nm-gray-100); border: 1px solid var(--nm-gray-300); border-radius: 20px; font-size: 13px; color: var(--nm-gray-700); cursor: pointer; transition: all .2s ease; }
+#sourcing-view .tag-chip:hover { background: var(--nm-primary); color: #fff; border-color: var(--nm-primary); }
+
+#sourcing-view .candidate-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; margin-top: 24px; }
+#sourcing-view .candidate-card { background: #fff; border-radius: 12px; padding: 20px; border: 2px solid var(--nm-gray-200); transition: all .3s ease; cursor: pointer; position: relative; overflow: hidden; }
+#sourcing-view .candidate-card::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--nm-primary); transform: translateX(-4px); transition: transform .3s ease; }
+#sourcing-view .candidate-card:hover { border-color: var(--nm-primary); box-shadow: 0 8px 16px rgba(0,61,130,.12); transform: translateY(-2px); }
+#sourcing-view .candidate-card:hover::before { transform: translateX(0); }
+#sourcing-view .candidate-card.selected { background: linear-gradient(135deg, rgba(0,61,130,.05) 0%, rgba(212,175,55,.05) 100%); border-color: var(--nm-accent-gold); }
+#sourcing-view .candidate-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+#sourcing-view .candidate-avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--nm-primary) 0%, var(--nm-primary-light) 100%); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 600; font-size: 18px; }
+#sourcing-view .candidate-info { flex: 1; min-width: 0; }
+#sourcing-view .candidate-name { font-size: 16px; font-weight: 600; color: var(--nm-gray-900); margin: 0 0 4px 0; display: flex; align-items: center; gap: 8px; }
+#sourcing-view .candidate-title { font-size: 14px; color: var(--nm-gray-600); margin: 0 0 2px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#sourcing-view .candidate-company { font-size: 13px; color: var(--nm-gray-500); margin: 0; }
+#sourcing-view .score-indicator { margin: 16px 0; }
+#sourcing-view .score-label { font-size: 12px; font-weight: 600; color: var(--nm-gray-700); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; display: flex; justify-content: space-between; }
+#sourcing-view .score-bar-container { height: 8px; background: var(--nm-gray-200); border-radius: 4px; overflow: hidden; position: relative; }
+#sourcing-view .score-bar { height: 100%; border-radius: 4px; transition: width .6s ease; position: relative; overflow: hidden; }
+#sourcing-view .score-bar::after { content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent); animation: shimmer 2s infinite; }
+@keyframes shimmer { 100% { left: 100%; } }
+#sourcing-view .score-bar.high { background: linear-gradient(90deg, #059669 0%, #10b981 100%); }
+#sourcing-view .score-bar.medium { background: linear-gradient(90deg, #d97706 0%, #fbbf24 100%); }
+#sourcing-view .score-bar.low { background: linear-gradient(90deg, #dc2626 0%, #f87171 100%); }
+#sourcing-view .candidate-signals { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+#sourcing-view .signal-chip { display: inline-flex; align-items: center; padding: 4px 8px; background: var(--nm-gray-100); border: 1px solid var(--nm-gray-300); border-radius: 6px; font-size: 12px; color: var(--nm-gray-700); gap: 4px; }
+#sourcing-view .signal-chip.active { background: rgba(4,120,87,.1); border-color: var(--nm-success); color: var(--nm-success); }
+#sourcing-view .candidate-actions { display: flex; gap: 8px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--nm-gray-200); }
+#sourcing-view .action-btn { flex: 1; padding: 8px 12px; border: 1px solid var(--nm-gray-300); background: #fff; border-radius: 6px; font-size: 13px; font-weight: 500; color: var(--nm-gray-700); cursor: pointer; transition: all .2s ease; display: flex; align-items: center; justify-content: center; gap: 6px; }
+#sourcing-view .action-btn:hover { background: var(--nm-primary); color: #fff; border-color: var(--nm-primary); }
+#sourcing-view .action-btn.primary { background: var(--nm-primary); color: #fff; border-color: var(--nm-primary); }
+#sourcing-view .action-btn.primary:hover { background: var(--nm-primary-dark); border-color: var(--nm-primary-dark); }
+
+@media (max-width: 1024px) { #sourcing-view .search-input-group { grid-template-columns: 1fr; gap: 16px; } #sourcing-view .stats-dashboard { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { #sourcing-view .stats-dashboard { grid-template-columns: 1fr; } #sourcing-view .candidate-grid { grid-template-columns: 1fr; } #sourcing-view .header-content { flex-direction: column; gap: 16px; } }
