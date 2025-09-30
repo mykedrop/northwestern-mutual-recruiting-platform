@@ -8,7 +8,9 @@
     "npm": "9.x"
   },
   "scripts": {
-    "start": "cd backend && node server.js"
+    "start": "cd backend && node server.js",
+    "build": "cd backend && npm ci",
+    "postinstall": "cd backend && npm ci"
   },
   "dependencies": {},
   "keywords": [
