@@ -3,22 +3,35 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const pool = new Pool({
-    host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT || 5432,
-    database: process.env.DB_NAME || 'northwestern_mutual_recruiting',
-    user: process.env.DB_USER || 'postgres',
-    password: process.env.DB_PASSWORD || '',
-    max: 20,
-    idleTimeoutMillis: 30000,
-    connectionTimeoutMillis: 10000, // Increased for production stability
-    statement_timeout: 30000, // 30 second query timeout
-    query_timeout: 30000,
-    application_name: 'northwestern_mutual_recruiting',
-    // Enterprise-grade connection settings
-    keepAlive: true,
-    keepAliveInitialDelayMillis: 10000,
-});
+// Railway provides DATABASE_URL in production, use individual vars for local dev
+const pool = new Pool(
+    process.env.DATABASE_URL ? {
+        connectionString: process.env.DATABASE_URL,
+        ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+        max: 20,
+        idleTimeoutMillis: 30000,
+        connectionTimeoutMillis: 10000,
+        statement_timeout: 30000,
+        query_timeout: 30000,
+        application_name: 'northwestern_mutual_recruiting',
+        keepAlive: true,
+        keepAliveInitialDelayMillis: 10000,
+    } : {
+        host: process.env.DB_HOST || 'localhost',
+        port: process.env.DB_PORT || 5432,
+        database: process.env.DB_NAME || 'northwestern_mutual_recruiting',
+        user: process.env.DB_USER || 'postgres',
+        password: process.env.DB_PASSWORD || '',
+        max: 20,
+        idleTimeoutMillis: 30000,
+        connectionTimeoutMillis: 10000,
+        statement_timeout: 30000,
+        query_timeout: 30000,
+        application_name: 'northwestern_mutual_recruiting',
+        keepAlive: true,
+        keepAliveInitialDelayMillis: 10000,
+    }
+);
 
 // Enterprise-grade connection testing with retry logic
 async function testConnection(retries = 3) {

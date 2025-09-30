@@ -199,7 +199,8 @@ io.on('connection', (socket) => {
 // Make io accessible to routes
 app.set('io', io);
 
-// Initialize AI services on startup
+// Initialize database and services on startup
+const { initializeDatabase } = require('./utils/init-database');
 const openAIService = require('./services/openai.service');
 const { queues } = require('./services/queue.service');
 
@@ -207,9 +208,14 @@ const { queues } = require('./services/queue.service');
 const successPredictor = require('./ml/models/successPredictor');
 const retentionPredictor = require('./ml/models/retentionPredictor');
 
-async function initializeAI() {
+async function initializeServices() {
+    console.log('🚀 Initializing application services...');
+
+    // Initialize database first
+    await initializeDatabase();
+
+    // Then initialize AI services
     console.log('🤖 Initializing AI services...');
-    
     try {
         await openAIService.initializePinecone();
         await successPredictor.initialize();
@@ -220,7 +226,7 @@ async function initializeAI() {
 }
 
 // Call initialization
-initializeAI();
+initializeServices();
 
 // Add Bull Board for queue monitoring (optional)
 const { createBullBoard } = require('@bull-board/api');
