@@ -6,6 +6,8 @@ const { createServer } = require('http');
 const { Server } = require('socket.io');
 const rateLimit = require('express-rate-limit');
 const path = require('path');
+const passport = require('passport');
+const session = require('express-session');
 
 // Import security middleware
 const {
@@ -24,6 +26,10 @@ const {
 // Load environment variables
 dotenv.config();
 
+// Import and configure OAuth
+const { configureOAuth } = require('./config/oauth');
+configureOAuth();
+
 // Disable Redis-backed queues locally to prevent connection crashes
 if (!process.env.BULK_DISABLE_REDIS) {
     process.env.BULK_DISABLE_REDIS = 'true';
@@ -31,6 +37,7 @@ if (!process.env.BULK_DISABLE_REDIS) {
 
 // Import routes
 const authRoutes = require('./routes/auth');
+const oauthRoutes = require('./routes/oauth');
 const assessmentRoutes = require('./routes/assessment');
 const dashboardRoutes = require('./routes/dashboard');
 const exportRoutes = require('./routes/export');
@@ -84,6 +91,22 @@ app.use(helmetConfig);
 app.use(cors(corsConfig));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// Session configuration for OAuth
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'your-session-secret-key',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    }
+}));
+
+// Initialize Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(xssProtection);
 app.use(sqlInjectionProtection);
 app.use(validateInput);
@@ -116,6 +139,7 @@ app.use('/api/', auditMiddleware({ eventCategory: 'API' }));
 
 // API Routes with specific audit configurations
 app.use('/api/auth', auditAuth, authRoutes);
+app.use('/api/auth', auditAuth, oauthRoutes);
 app.use('/api/assessment', auditMiddleware({ eventType: 'ASSESSMENT', riskLevel: 'MEDIUM' }), assessmentRoutes);
 app.use('/api/assessments', auditMiddleware({ eventType: 'ASSESSMENT', riskLevel: 'MEDIUM' }), assessmentRoutes);
 app.use('/api/dashboard', auditMiddleware({ eventType: 'DASHBOARD', riskLevel: 'LOW' }), dashboardRoutes);

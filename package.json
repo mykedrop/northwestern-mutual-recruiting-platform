@@ -1,4 +1,29 @@
 {
+  "name": "northwestern-mutual-recruiting-platform",
+  "version": "1.0.0",
+  "description": "Northwestern Mutual Recruiting Platform - Full Stack Application",
+  "private": true,
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "scripts": {
+    "install:all": "npm install && cd backend && npm install && cd ../client && npm install",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd client && npm run dev",
+    "build": "cd backend && npm install && npm run build",
+    "start": "cd backend && npm start",
+    "migrate": "cd backend && npm run migrate",
+    "test": "npm run test:backend && npm run test:frontend",
+    "test:backend": "cd backend && npm test",
+    "test:frontend": "cd client && npm test",
+    "lint": "npm run lint:backend && npm run lint:frontend",
+    "lint:backend": "echo 'Backend linting not configured'",
+    "lint:frontend": "cd client && npm run lint",
+    "deploy:railway": "echo 'Deploy with: railway up'",
+    "postinstall": "cd backend && npm run migrate"
+  },
   "dependencies": {
     "axios": "^1.12.2",
     "pdfkit": "^0.17.2",
@@ -7,8 +32,22 @@
   "devDependencies": {
     "@playwright/test": "^1.55.1",
     "chrome-launcher": "^1.2.0",
+    "concurrently": "^7.6.0",
     "lighthouse": "^12.8.2",
     "playwright-lighthouse": "^4.0.0",
     "puppeteer": "^24.22.2"
-  }
+  },
+  "keywords": [
+    "northwestern-mutual",
+    "recruiting",
+    "assessment",
+    "behavioral-analysis",
+    "hr-platform"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/northwestern-mutual/recruiting-platform.git"
+  },
+  "author": "Northwestern Mutual Technology Team",
+  "license": "PROPRIETARY"
 }

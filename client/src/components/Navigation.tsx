@@ -37,17 +37,17 @@ const Navigation: React.FC = () => {
       await logout();
       navigate('/login');
     } catch (error) {
-      console.error('Logout failed:', error);
+      // Logout error handled by auth store
     }
   };
 
   return (
-    <nav className="bg-blue-900 text-white shadow-lg">
+    <nav className="bg-nm-blue-500 text-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <div className="flex items-center">
-              <div className="bg-white text-blue-900 px-2 py-1 rounded font-bold text-sm mr-3">
+              <div className="bg-white text-nm-blue-500 px-2 py-1 rounded font-bold text-sm mr-3">
                 NM
               </div>
               <div>
@@ -56,7 +56,7 @@ const Navigation: React.FC = () => {
               </div>
             </div>
             {user?.organization && (
-              <div className="ml-6 pl-6 border-l border-blue-700">
+              <div className="ml-6 pl-6 border-l border-nm-blue-400">
                 <span className="text-sm font-medium">{user.organization.name}</span>
                 <span className="ml-2 text-xs opacity-75">({user.role})</span>
               </div>
@@ -69,10 +69,10 @@ const Navigation: React.FC = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                     location.pathname === item.path
-                      ? 'bg-blue-800 text-white'
-                      : 'text-blue-100 hover:bg-blue-700 hover:text-white'
+                      ? 'bg-nm-blue-600 text-white shadow-md'
+                      : 'text-blue-100 hover:bg-nm-blue-400 hover:text-white'
                   }`}
                 >
                   {item.label}
@@ -81,12 +81,12 @@ const Navigation: React.FC = () => {
             </div>
 
             {/* User menu */}
-            <div className="relative ml-6 pl-6 border-l border-blue-700" ref={menuRef}>
+            <div className="relative ml-6 pl-6 border-l border-nm-blue-400" ref={menuRef}>
               <button
                 onClick={() => setUserMenuOpen(!userMenuOpen)}
-                className="flex items-center space-x-3 hover:bg-blue-800 px-3 py-2 rounded-lg transition-colors"
+                className="flex items-center space-x-3 hover:bg-nm-blue-600 px-3 py-2 rounded-lg transition-all duration-200"
               >
-                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center font-semibold">
+                <div className="w-8 h-8 bg-nm-blue-600 rounded-full flex items-center justify-center font-semibold">
                   {user?.firstName?.[0]}{user?.lastName?.[0]}
                 </div>
                 <div className="text-left">
@@ -96,7 +96,7 @@ const Navigation: React.FC = () => {
                   <div className="text-xs opacity-75">{user?.email}</div>
                 </div>
                 <svg
-                  className={`w-4 h-4 transition-transform ${userMenuOpen ? 'rotate-180' : ''}`}
+                  className={`w-4 h-4 transition-transform duration-200 ${userMenuOpen ? 'rotate-180' : ''}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

@@ -19,21 +19,21 @@ const Dashboard = () => {
   const topPerformers = candidates.filter(c => (c.score || 0) >= 90).length;
 
   return (
-    <div className="dashboard min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50" data-testid="dashboard-content">
+    <div className="dashboard min-h-screen bg-gradient-to-br from-nm-blue-50 via-white to-nm-blue-50" data-testid="dashboard-content">
       {/* Northwestern Mutual Header */}
-      <div className="bg-gradient-to-r from-blue-900 to-blue-800 text-white shadow-2xl">
+      <div className="bg-gradient-to-r from-nm-blue-500 to-nm-blue-600 text-white shadow-2xl">
         <div className="px-8 py-6">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold">Recruiting Intelligence Dashboard</h1>
-              <p className="text-blue-100 mt-1">Northwestern Mutual • Advanced Candidate Analytics</p>
+              <p className="text-nm-blue-100 mt-1">Northwestern Mutual • Advanced Candidate Analytics</p>
             </div>
             <div className="flex items-center space-x-4">
-              <div className="bg-blue-800 px-4 py-2 rounded-lg">
-                <div className="text-xs text-blue-200">Last Updated</div>
+              <div className="bg-nm-blue-600 px-4 py-2 rounded-lg shadow-md">
+                <div className="text-xs text-nm-blue-200">Last Updated</div>
                 <div className="text-sm font-semibold">Just now</div>
               </div>
-              <div className="bg-green-600 px-4 py-2 rounded-lg">
+              <div className="bg-green-600 px-4 py-2 rounded-lg shadow-md">
                 <div className="text-xs text-green-100">System Status</div>
                 <div className="text-sm font-semibold">All Systems Operational</div>
               </div>

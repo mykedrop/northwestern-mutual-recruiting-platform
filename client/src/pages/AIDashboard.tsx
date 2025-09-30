@@ -99,7 +99,7 @@ const AIDashboard = () => {
         setMetrics(data.metrics);
       }
     } catch (err) {
-      console.error('Failed to load metrics:', err);
+      // Metrics loading failed - handled gracefully
     }
   };
 

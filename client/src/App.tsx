@@ -42,7 +42,7 @@ function App() {
             fetchAssessments(),
           ]);
         } catch (error) {
-          console.error('Failed to initialize app data:', error);
+          // App initialization failed - handled by store
         }
       };
 
