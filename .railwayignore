@@ -3,3 +3,8 @@ node_modules/
 *.log
 .env
 .DS_Store
+client/
+frontend/
+.git/
+*.md
+nixpacks.toml.bak

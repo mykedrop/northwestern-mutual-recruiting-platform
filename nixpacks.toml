@@ -1,0 +1,11 @@
+[providers]
+node = "18"
+
+[phases.build]
+cmds = ["npm ci --prefix backend"]
+
+[phases.start]
+cmd = "cd backend && node server.js"
+
+[variables]
+NODE_ENV = "production"
