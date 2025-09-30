@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "migrate": "node scripts/migrate.js",
+    "migrate": "echo 'Migration skipped for deployment'",
     "setup-db": "psql -U postgres -f utils/database-setup.sql",
     "seed": "node utils/seed-data.js",
     "build": "echo 'Backend build complete'",

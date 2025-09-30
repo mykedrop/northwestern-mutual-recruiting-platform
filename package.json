@@ -11,7 +11,8 @@
     "start": "cd backend && node server.js",
     "build": "cd backend && npm install --production",
     "dev": "cd backend && npm run dev",
-    "migrate": "cd backend && npm run migrate"
+    "migrate": "echo 'Skipping migrations for now'",
+    "postinstall": "echo 'Installation complete - skipping migrations'"
   },
   "dependencies": {},
   "keywords": [
