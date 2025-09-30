@@ -8,3 +8,8 @@ frontend/
 .git/
 *.md
 nixpacks.toml.bak
+# Exclude Python files to force Node.js detection
+*.py
+requirements.txt
+__pycache__/
+*.pyc
