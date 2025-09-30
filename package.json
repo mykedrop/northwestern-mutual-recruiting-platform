@@ -1,6 +1,6 @@
 {
   "name": "intelliflow-recruiting-platform",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "IntelliFlow Recruiting Platform - Clean Railway Deployment",
   "main": "backend/server.js",
   "engines": {
