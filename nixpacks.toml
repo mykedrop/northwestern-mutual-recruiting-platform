@@ -1,18 +1,18 @@
-[build]
-cmd = "cd backend && npm install"
+[providers]
+node = "18"
+
+[phases.setup]
+nixPkgs = ["nodejs-18_x"]
+
+[phases.install]
+cmd = "npm install"
+
+[phases.build]
+cmd = "npm run build"
 
 [start]
-cmd = "cd backend && npm start"
+cmd = "npm start"
 
 [variables]
 NODE_ENV = "production"
 PORT = "3001"
-
-[phases.setup]
-nixPkgs = ["nodejs-18_x", "npm-9_x"]
-
-[phases.install]
-cmd = "cd backend && npm ci --only=production"
-
-[phases.build]
-cmd = "cd backend && npm run build"
