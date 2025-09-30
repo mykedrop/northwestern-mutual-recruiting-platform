@@ -1,0 +1,12 @@
+node_modules
+npm-debug.log
+.env
+.DS_Store
+*.log
+client/
+frontend/
+.git/
+README.md
+*.md
+.vscode/
+.idea/
